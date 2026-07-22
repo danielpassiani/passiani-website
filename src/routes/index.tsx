@@ -7,7 +7,9 @@ import {
 } from "lucide-react";
 import headerAsset from "@/assets/passiani-header.png.asset.json";
 import footerAsset from "@/assets/passiani-footer.png.asset.json";
-import portrait from "@/assets/marcelo-portrait.jpg";
+import portrait from "@/assets/passiani-portrait.jpg.asset.json";
+import working from "@/assets/passiani-working.jpg.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
