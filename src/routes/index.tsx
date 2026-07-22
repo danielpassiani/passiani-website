@@ -151,7 +151,7 @@ function Hero() {
             A defesa <span className="gold-gradient">começa</span> no contrato.
           </h1>
           <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
-            Há 25 anos protegendo pequenos e médios empresários com advocacia full service.
+            Há mais de 20 anos protegendo pequenos e médios empresários com advocacia full service.
             <strong className="text-foreground"> Menos processo, mais lucro.</strong>
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
