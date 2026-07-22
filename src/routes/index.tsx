@@ -671,7 +671,11 @@ function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-6 border-t border-border/40 pt-4 text-center text-[0.65rem] uppercase tracking-[0.3em] text-muted-foreground/70">
+        <div className="mt-12 flex flex-col gap-3 border-t border-border/60 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Passiani Advogados. Todos os direitos reservados.</p>
+          <p>R. Américo Samarone, 248b · São Paulo — SP</p>
+        </div>
+        <div className="mt-4 text-center text-[0.6rem] uppercase tracking-[0.35em] text-muted-foreground/60">
           Site desenvolvido por Daniel Passiani
         </div>
       </div>
