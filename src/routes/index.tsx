@@ -162,11 +162,12 @@ function Hero() {
           <div className="pointer-events-none absolute -inset-6 -z-10 rounded-sm bg-[radial-gradient(circle_at_50%_50%,oklch(0.78_0.13_82/0.18),transparent_70%)]" />
           <div className="relative overflow-hidden border border-border/60">
             <img
-              src={portrait}
-              alt="Marcelo Passiani — Advogado responsável"
-              width={1024}
+              src={portrait.url}
+              alt="Dr. Marcelo Passiani — Advogado responsável pela Passiani Advogados"
+              width={1920}
               height={1280}
-              className="h-full w-full object-cover grayscale contrast-110"
+              className="aspect-[4/5] h-full w-full object-cover object-top grayscale contrast-110"
+
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/70 to-transparent p-6">
               <p className="font-display text-xs uppercase tracking-[0.3em] text-gold">Dr. Marcelo Passiani</p>
