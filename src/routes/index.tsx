@@ -182,7 +182,7 @@ function Hero() {
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/70 to-transparent p-6">
               <p className="font-display text-xs uppercase tracking-[0.3em] text-gold">Dr. Marcelo Passiani</p>
-              <p className="mt-1 text-sm text-muted-foreground">OAB · Advogado responsável</p>
+              <p className="mt-1 text-sm text-muted-foreground">OAB/SP 237.206 · Advogado responsável</p>
             </div>
           </div>
         </div>
