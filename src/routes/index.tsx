@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import headerAsset from "@/assets/passiani-header.png.asset.json";
 import footerAsset from "@/assets/passiani-footer.png.asset.json";
-import logoAsset from "@/assets/passiani-logo.jpg.asset.json";
+
 import portrait from "@/assets/passiani-portrait.jpg.asset.json";
 import working from "@/assets/passiani-working.jpg.asset.json";
 import escritorioAsset from "@/assets/passiani-escritorio.png.asset.json";
@@ -146,13 +146,10 @@ function Nav() {
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
       <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <a href="#top" className="flex min-w-0 items-center gap-3" aria-label="Passiani Advogados — Início">
-          <img
-            src={logoAsset.url}
-            alt="Passiani Advogados"
-            width={220}
-            height={64}
-            className="h-9 w-auto object-contain sm:h-10"
-          />
+          <span className="wordmark text-[15px] sm:text-[17px]">
+            <span>Passiani</span>
+            <span className="wordmark-sub text-[10px] sm:text-[11px] opacity-90">Advogados</span>
+          </span>
         </a>
         <nav className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
@@ -660,13 +657,13 @@ function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <img
-              src={logoAsset.url}
-              alt="Passiani Advogados"
-              width={260}
-              height={80}
-              className="h-12 w-auto object-contain"
-            />
+            <div className="flex flex-col gap-2">
+              <span className="wordmark text-2xl">
+                <span>Passiani</span>
+              </span>
+              <span className="wordmark-sub text-[11px] tracking-[0.5em]">Advogados</span>
+              <span className="mt-2 h-px w-16 bg-gradient-to-r from-gold to-transparent" />
+            </div>
             <p className="mt-6 max-w-sm text-sm text-muted-foreground">
               Advocacia empresarial full service. A defesa começa no contrato.
             </p>
