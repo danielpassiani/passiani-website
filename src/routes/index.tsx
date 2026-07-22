@@ -146,7 +146,7 @@ function Hero() {
     <section id="top" className="relative overflow-hidden border-b border-border/50">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-[1.15fr_1fr] md:gap-14 md:py-24 lg:px-8 lg:py-32">
         <div className="relative z-10 flex flex-col justify-center">
-          <span className="eyebrow"><span className="gold-rule" /> Advocacia Empresarial · Desde 2000</span>
+          <span className="eyebrow"><span className="gold-rule" /> Advocacia Empresarial · Desde 2004</span>
           <h1 className="headline mt-6 text-5xl text-foreground sm:text-6xl md:text-7xl lg:text-[5.5rem]">
             A defesa <span className="gold-gradient">começa</span> no contrato.
           </h1>
