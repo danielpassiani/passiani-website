@@ -83,6 +83,7 @@ function Home() {
       <About />
       <Areas />
       <Content />
+      <Escritorio />
       <Testimonials />
       <SocialProof />
       <Faq />
