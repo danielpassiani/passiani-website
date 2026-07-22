@@ -27,6 +27,11 @@ export const Route = createFileRoute("/")({
 
 const WHATSAPP = "https://wa.me/5511973771473?text=Olá,%20gostaria%20de%20agendar%20uma%20conversa%20com%20a%20Passiani%20Advogados.";
 
+const YOUTUBE_CHANNEL = "https://www.youtube.com/@podissopassiani";
+const INSTAGRAM = "https://instagram.com/passianiadvogados";
+const FACEBOOK = "https://web.facebook.com/profile.php?id=61589470156729";
+const GOOGLE_MAPS = "https://maps.app.goo.gl/2MQjUMUksJyG5FfV7";
+
 const areas = [
   { icon: Shield, title: "Blindagem Patrimonial", desc: "Holdings, reorganização societária e proteção de bens pessoais contra riscos empresariais." },
   { icon: FileSignature, title: "Contratos Empresariais", desc: "Contratos societários, comerciais e de prestação de serviços feitos para prevenir litígios." },
@@ -43,13 +48,16 @@ const impact = [
   "A defesa começa no contrato.",
 ];
 
-const episodes = [
-  { n: "01", title: "18 contratos que toda empresa deve ter com cada funcionário", tag: "Contratos" },
-  { n: "02", title: "5 documentos para proteger o seu patrimônio", tag: "Blindagem" },
-  { n: "03", title: "Ele não quis CLT… mas te processou depois", tag: "Trabalhista" },
-  { n: "04", title: "Contrato mal feito hoje, processo certo amanhã", tag: "Contratos" },
-  { n: "05", title: "Os 4 impostos que empresas de serviço pagam a mais todo mês", tag: "Tributário" },
-  { n: "06", title: "PJ com hora fixa não é PJ", tag: "Trabalhista" },
+// Para adicionar/trocar vídeos: pegue o ID do YouTube (ex.: em https://youtu.be/ABC123 o ID é "ABC123",
+// em shorts https://www.youtube.com/shorts/ABC123 o ID também é "ABC123") e cole no campo youtubeId abaixo.
+// Deixe youtubeId vazio ("") para exibir apenas o card estático.
+const episodes: { n: string; title: string; tag: string; youtubeId: string }[] = [
+  { n: "01", title: "18 contratos que toda empresa deve ter com cada funcionário", tag: "Contratos", youtubeId: "" },
+  { n: "02", title: "5 documentos para proteger o seu patrimônio", tag: "Blindagem", youtubeId: "" },
+  { n: "03", title: "Ele não quis CLT… mas te processou depois", tag: "Trabalhista", youtubeId: "" },
+  { n: "04", title: "Contrato mal feito hoje, processo certo amanhã", tag: "Contratos", youtubeId: "" },
+  { n: "05", title: "Os 4 impostos que empresas de serviço pagam a mais todo mês", tag: "Tributário", youtubeId: "" },
+  { n: "06", title: "PJ com hora fixa não é PJ", tag: "Trabalhista", youtubeId: "" },
 ];
 
 
