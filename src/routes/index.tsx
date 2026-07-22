@@ -640,8 +640,13 @@ function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <p className="font-display text-3xl font-bold tracking-widest text-gold">PASSIANI</p>
-            <p className="mt-1 text-xs uppercase tracking-[0.3em] text-muted-foreground">Advogados</p>
+            <img
+              src={logoAsset.url}
+              alt="Passiani Advogados"
+              width={260}
+              height={80}
+              className="h-12 w-auto object-contain"
+            />
             <p className="mt-6 max-w-sm text-sm text-muted-foreground">
               Advocacia empresarial full service. A defesa começa no contrato.
             </p>
