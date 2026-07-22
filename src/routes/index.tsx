@@ -322,32 +322,94 @@ function Content() {
               e mostram, na prática, o que sua empresa precisa fazer hoje.
             </p>
           </div>
-          <div className="flex gap-3">
-            <a href="https://instagram.com/passianiadvogados" target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+          <div className="flex flex-wrap gap-3">
+            <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
               <Instagram className="h-4 w-4" /> Instagram
             </a>
-            <a href="https://youtube.com/@passianiadvogados" target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+            <a href={YOUTUBE_CHANNEL} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
               <Youtube className="h-4 w-4" /> YouTube
+            </a>
+            <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+              <Facebook className="h-4 w-4" /> Facebook
             </a>
           </div>
         </div>
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {episodes.map((ep) => (
-            <article key={ep.n} className="group relative flex aspect-[4/5] flex-col justify-between overflow-hidden border border-border/60 bg-gradient-to-br from-card to-background p-6 transition-transform hover:-translate-y-1">
-              <div className="flex items-center justify-between">
-                <span className="font-display text-6xl font-black text-gold/20 group-hover:text-gold/40 transition-colors">{ep.n}</span>
-                <Mic className="h-5 w-5 text-gold" />
-              </div>
-              <div>
-                <span className="inline-block border border-gold/50 px-2 py-1 text-[0.65rem] uppercase tracking-[0.25em] text-gold">{ep.tag}</span>
-                <h3 className="mt-4 font-display text-2xl uppercase leading-tight text-foreground">{ep.title}</h3>
-                <p className="mt-4 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground group-hover:text-gold transition-colors">
-                  Assistir episódio <ArrowRight className="h-3 w-3" />
-                </p>
-              </div>
-            </article>
-          ))}
+          {episodes.map((ep) => {
+            const hasVideo = ep.youtubeId.trim().length > 0;
+            const href = hasVideo ? `https://www.youtube.com/watch?v=${ep.youtubeId}` : YOUTUBE_CHANNEL;
+            return (
+              <a
+                key={ep.n}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex flex-col overflow-hidden border border-border/60 bg-gradient-to-br from-card to-background transition-transform hover:-translate-y-1"
+              >
+                {hasVideo ? (
+                  <div className="relative aspect-video w-full overflow-hidden bg-ink">
+                    <img
+                      src={`https://i.ytimg.com/vi/${ep.youtubeId}/hqdefault.jpg`}
+                      alt={ep.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover opacity-80 transition-opacity group-hover:opacity-100"
+                    />
+                    <div className="absolute inset-0 grid place-items-center bg-black/20">
+                      <PlayCircle className="h-14 w-14 text-gold drop-shadow-lg" strokeWidth={1.5} />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex aspect-video items-center justify-between bg-ink px-6">
+                    <span className="font-display text-6xl font-black text-gold/25">{ep.n}</span>
+                    <Mic className="h-6 w-6 text-gold" />
+                  </div>
+                )}
+                <div className="flex flex-1 flex-col p-6">
+                  <span className="inline-block self-start border border-gold/50 px-2 py-1 text-[0.65rem] uppercase tracking-[0.25em] text-gold">{ep.tag}</span>
+                  <h3 className="mt-4 font-display text-xl uppercase leading-tight text-foreground">{ep.title}</h3>
+                  <p className="mt-4 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground group-hover:text-gold transition-colors">
+                    Assistir no YouTube <ArrowRight className="h-3 w-3" />
+                  </p>
+                </div>
+              </a>
+            );
+          })}
         </div>
+      </div>
+    </section>
+  );
+}
+
+function Escritorio() {
+  return (
+    <section id="escritorio" className="border-b border-border/50">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+        <div className="max-w-2xl">
+          <span className="eyebrow"><span className="gold-rule" /> Nosso escritório</span>
+          <h2 className="headline mt-5 text-4xl sm:text-5xl md:text-6xl">
+            Onde a sua empresa <span className="gold-gradient">é recebida</span>.
+          </h2>
+          <p className="mt-5 text-muted-foreground">
+            Estrutura própria em São Paulo. Ambiente reservado, técnico e pensado para atender o empresário com a discrição que a matéria exige.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
+          <div className="overflow-hidden border border-border/60">
+            <img src={fachada.url} alt="Fachada da sede Passiani Advogados em São Paulo" loading="lazy" className="aspect-[4/5] w-full object-cover md:aspect-[4/3]" />
+          </div>
+          <div className="overflow-hidden border border-border/60">
+            <img src={recepcao.url} alt="Recepção do escritório Passiani Advogados" loading="lazy" className="aspect-[4/5] w-full object-cover md:aspect-[4/3]" />
+          </div>
+        </div>
+        <div className="mt-6">
+          <a href={GOOGLE_MAPS} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+            <MapPin className="h-4 w-4" /> Ver no Google Maps
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
       </div>
     </section>
   );
