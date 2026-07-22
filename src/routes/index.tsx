@@ -19,6 +19,11 @@ import certHonra from "@/assets/cert-honra.jpg.asset.json";
 import certCivil from "@/assets/cert-civil.jpg.asset.json";
 import certPenal from "@/assets/cert-penal.jpg.asset.json";
 import certMestre from "@/assets/cert-mestre.jpg.asset.json";
+import thumbSeguranca from "@/assets/thumb-seguranca.png.asset.json";
+import thumbClt from "@/assets/thumb-clt.png.asset.json";
+import thumb5Docs from "@/assets/thumb-5documentos.png.asset.json";
+import thumbContrato from "@/assets/thumb-contrato.png.asset.json";
+import thumbSocio from "@/assets/thumb-socio.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
