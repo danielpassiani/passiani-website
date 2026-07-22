@@ -393,12 +393,12 @@ function Content() {
                 className="group relative flex flex-col overflow-hidden border border-border/60 bg-gradient-to-br from-card to-background transition-transform hover:-translate-y-1"
               >
                 {isYouTube && ep.youtubeId ? (
-                  <div className="relative aspect-video w-full overflow-hidden bg-ink">
+                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink">
                     <img
                       src={`https://i.ytimg.com/vi/${ep.youtubeId}/hqdefault.jpg`}
                       alt={ep.title}
                       loading="lazy"
-                      className="h-full w-full object-cover opacity-80 transition-opacity group-hover:opacity-100"
+                      className="h-full w-full object-cover opacity-90 transition-opacity group-hover:opacity-100"
                     />
                     <div className="absolute inset-0 grid place-items-center bg-black/20">
                       <PlayCircle className="h-14 w-14 text-gold drop-shadow-lg" strokeWidth={1.5} />
@@ -407,8 +407,22 @@ function Content() {
                       <Youtube className="h-3 w-3" /> YouTube
                     </div>
                   </div>
+                ) : ep.thumb ? (
+                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink">
+                    <img
+                      src={ep.thumb}
+                      alt={ep.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                    <div className="absolute left-3 top-3 inline-flex items-center gap-1.5 border border-gold/60 bg-background/80 px-2 py-1 text-[0.6rem] uppercase tracking-[0.25em] text-gold backdrop-blur">
+                      <Instagram className="h-3 w-3" /> Instagram
+                    </div>
+                    <PlayCircle className="absolute bottom-3 right-3 h-10 w-10 text-gold drop-shadow-lg opacity-90 group-hover:opacity-100" strokeWidth={1.5} />
+                  </div>
                 ) : (
-                  <div className="relative flex aspect-video items-center justify-between bg-ink px-6">
+                  <div className="relative flex aspect-[4/5] items-center justify-between bg-ink px-6">
                     <span className="font-display text-6xl font-black text-gold/25">{ep.n}</span>
                     <PlatformIcon className="h-8 w-8 text-gold" />
                     <div className="absolute left-3 top-3 inline-flex items-center gap-1.5 border border-gold/60 bg-background/80 px-2 py-1 text-[0.6rem] uppercase tracking-[0.25em] text-gold backdrop-blur">
