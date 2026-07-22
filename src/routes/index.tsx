@@ -531,7 +531,7 @@ function Contact() {
                 R. Américo Samarone, 248b · Vila Moinho Velho, São Paulo — SP · 04284-000
               </a>
             </Info>
-            <Info icon={Phone} label="Telefone">Fixo (11) 2219-0510 · WhatsApp (11) 9 7377-1473</Info>
+            <Info icon={Phone} label="Telefone / WhatsApp">(11) 2219-0510 — atendimento por ligação e WhatsApp</Info>
             <Info icon={Mail} label="E-mail">suporte@passiani.com.br</Info>
             <Info icon={Clock} label="Horário">Segunda a sexta · 09h às 18h</Info>
             <Info icon={Scale} label="Registro profissional">Dr. Marcelo Passiani · OAB/SP 237.206 · Advogando desde 2004</Info>
