@@ -370,17 +370,18 @@ function Content() {
         </div>
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {episodes.map((ep) => {
-            const hasVideo = ep.youtubeId.trim().length > 0;
-            const href = hasVideo ? `https://www.youtube.com/watch?v=${ep.youtubeId}` : YOUTUBE_CHANNEL;
+            const isYouTube = ep.platform === "youtube";
+            const PlatformIcon = isYouTube ? Youtube : Instagram;
+            const platformLabel = isYouTube ? "Assistir no YouTube" : "Ver no Instagram";
             return (
               <a
                 key={ep.n}
-                href={href}
+                href={ep.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative flex flex-col overflow-hidden border border-border/60 bg-gradient-to-br from-card to-background transition-transform hover:-translate-y-1"
               >
-                {hasVideo ? (
+                {isYouTube && ep.youtubeId ? (
                   <div className="relative aspect-video w-full overflow-hidden bg-ink">
                     <img
                       src={`https://i.ytimg.com/vi/${ep.youtubeId}/hqdefault.jpg`}
@@ -391,18 +392,24 @@ function Content() {
                     <div className="absolute inset-0 grid place-items-center bg-black/20">
                       <PlayCircle className="h-14 w-14 text-gold drop-shadow-lg" strokeWidth={1.5} />
                     </div>
+                    <div className="absolute left-3 top-3 inline-flex items-center gap-1.5 border border-gold/60 bg-background/80 px-2 py-1 text-[0.6rem] uppercase tracking-[0.25em] text-gold backdrop-blur">
+                      <Youtube className="h-3 w-3" /> YouTube
+                    </div>
                   </div>
                 ) : (
-                  <div className="flex aspect-video items-center justify-between bg-ink px-6">
+                  <div className="relative flex aspect-video items-center justify-between bg-ink px-6">
                     <span className="font-display text-6xl font-black text-gold/25">{ep.n}</span>
-                    <Mic className="h-6 w-6 text-gold" />
+                    <PlatformIcon className="h-8 w-8 text-gold" />
+                    <div className="absolute left-3 top-3 inline-flex items-center gap-1.5 border border-gold/60 bg-background/80 px-2 py-1 text-[0.6rem] uppercase tracking-[0.25em] text-gold backdrop-blur">
+                      <Instagram className="h-3 w-3" /> Instagram
+                    </div>
                   </div>
                 )}
                 <div className="flex flex-1 flex-col p-6">
                   <span className="inline-block self-start border border-gold/50 px-2 py-1 text-[0.65rem] uppercase tracking-[0.25em] text-gold">{ep.tag}</span>
                   <h3 className="mt-4 font-display text-xl uppercase leading-tight text-foreground">{ep.title}</h3>
                   <p className="mt-4 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground group-hover:text-gold transition-colors">
-                    Assistir no YouTube <ArrowRight className="h-3 w-3" />
+                    {platformLabel} <ArrowRight className="h-3 w-3" />
                   </p>
                 </div>
               </a>
