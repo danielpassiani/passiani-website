@@ -2,21 +2,22 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   Shield, FileSignature, Users, AlertTriangle, Landmark, Scale,
-  Star, MapPin, Phone, Mail, Instagram, Youtube, Mic, MessageCircle,
+  Star, MapPin, Phone, Mail, Instagram, Youtube, MessageCircle,
   ArrowRight, Clock, ChevronDown, Quote, Facebook, PlayCircle,
   BookOpen, GraduationCap, Award, Sparkles,
 } from "lucide-react";
 import headerAsset from "@/assets/passiani-header.png.asset.json";
 import footerAsset from "@/assets/passiani-footer.png.asset.json";
+import logoAsset from "@/assets/passiani-logo.jpg.asset.json";
 import portrait from "@/assets/passiani-portrait.jpg.asset.json";
 import working from "@/assets/passiani-working.jpg.asset.json";
-import fachada from "@/assets/passiani-fachada.png.asset.json";
-import recepcao from "@/assets/passiani-recepcao.png.asset.json";
+import escritorioAsset from "@/assets/passiani-escritorio.png.asset.json";
 import penseBemCover from "@/assets/pense-bem-cover.png.asset.json";
 import certBacharel from "@/assets/cert-bacharel.jpg.asset.json";
 import certOab from "@/assets/cert-oab.jpg.asset.json";
 import certHonra from "@/assets/cert-honra.jpg.asset.json";
 import certCivil from "@/assets/cert-civil.jpg.asset.json";
+import certPenal from "@/assets/cert-penal.jpg.asset.json";
 import certMestre from "@/assets/cert-mestre.jpg.asset.json";
 
 
@@ -46,6 +47,7 @@ const certificates = [
   { img: certOab.url, title: "Certificado de Compromisso OAB/SP", org: "Ordem dos Advogados do Brasil — Secção SP", year: "2005" },
   { img: certHonra.url, title: "Diploma Honra ao Mérito", org: "OAB-SP · Assistência Judiciária", year: "2006" },
   { img: certCivil.url, title: "Especialista em Direito Civil", org: "Escola Paulista de Direito — EPD", year: "2007" },
+  { img: certPenal.url, title: "Especialista em Direito Penal e Processual Penal", org: "Faculdade Escola Paulista de Direito — EPD", year: "2018" },
   { img: certMestre.url, title: "Mestre em Função Social do Direito", org: "Faculdade Autônoma de Direito — FADISP", year: "2017" },
 ];
 
@@ -65,16 +67,25 @@ const impact = [
   "A defesa começa no contrato.",
 ];
 
-// Para adicionar/trocar vídeos: pegue o ID do YouTube (ex.: em https://youtu.be/ABC123 o ID é "ABC123",
-// em shorts https://www.youtube.com/shorts/ABC123 o ID também é "ABC123") e cole no campo youtubeId abaixo.
-// Deixe youtubeId vazio ("") para exibir apenas o card estático.
-const episodes: { n: string; title: string; tag: string; youtubeId: string }[] = [
-  { n: "01", title: "18 contratos que toda empresa deve ter com cada funcionário", tag: "Contratos", youtubeId: "" },
-  { n: "02", title: "5 documentos para proteger o seu patrimônio", tag: "Blindagem", youtubeId: "" },
-  { n: "03", title: "Ele não quis CLT… mas te processou depois", tag: "Trabalhista", youtubeId: "" },
-  { n: "04", title: "Contrato mal feito hoje, processo certo amanhã", tag: "Contratos", youtubeId: "" },
-  { n: "05", title: "Os 4 impostos que empresas de serviço pagam a mais todo mês", tag: "Tributário", youtubeId: "" },
-  { n: "06", title: "PJ com hora fixa não é PJ", tag: "Trabalhista", youtubeId: "" },
+// Cortes do Pod Isso Passiani: cada card aponta para o vídeo original (YouTube ou Instagram).
+// Para adicionar um novo corte, copie o link completo do post/vídeo em `url` e defina `platform`.
+// - YouTube Shorts: https://www.youtube.com/shorts/ID  → platform: "youtube", youtubeId: "ID"
+// - Instagram Reel/Post: https://www.instagram.com/p/ID/  → platform: "instagram" (não precisa youtubeId)
+type Episode = {
+  n: string;
+  title: string;
+  tag: string;
+  platform: "youtube" | "instagram";
+  url: string;
+  youtubeId?: string;
+};
+const episodes: Episode[] = [
+  { n: "01", title: "18 contratos que toda empresa deve ter com cada funcionário", tag: "Contratos", platform: "youtube", url: "https://www.youtube.com/shorts/U8J5tfjMq9c", youtubeId: "U8J5tfjMq9c" },
+  { n: "02", title: "5 documentos para proteger o seu patrimônio", tag: "Blindagem", platform: "instagram", url: "https://www.instagram.com/p/DajDYtHPlpn/" },
+  { n: "03", title: "Ele não quis CLT… mas te processou depois", tag: "Trabalhista", platform: "instagram", url: "https://www.instagram.com/p/DayYg9IMtw2/" },
+  { n: "04", title: "Contrato mal feito hoje, processo certo amanhã", tag: "Contratos", platform: "instagram", url: "https://www.instagram.com/p/Da1GI51vaCC/" },
+  { n: "05", title: "Segurança no trabalho: o que você ignora hoje pode custar caro amanhã", tag: "Prevenção", platform: "instagram", url: "https://www.instagram.com/p/DbGrX0Ys2Lc/" },
+  { n: "06", title: "Sócio de trabalho: parceria ou dor de cabeça?", tag: "Societário", platform: "instagram", url: "https://www.instagram.com/p/DaNxvWoOXDu/" },
 ];
 
 
@@ -128,9 +139,14 @@ function Nav() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
       <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6 lg:px-8">
-        <a href="#top" className="flex min-w-0 items-center gap-3">
-          <span className="font-display text-xl font-bold tracking-widest text-gold sm:text-2xl">PASSIANI</span>
-          <span className="hidden text-[0.65rem] uppercase tracking-[0.35em] text-muted-foreground sm:inline">Advogados</span>
+        <a href="#top" className="flex min-w-0 items-center gap-3" aria-label="Passiani Advogados — Início">
+          <img
+            src={logoAsset.url}
+            alt="Passiani Advogados"
+            width={220}
+            height={64}
+            className="h-9 w-auto object-contain sm:h-10"
+          />
         </a>
         <nav className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
@@ -359,17 +375,18 @@ function Content() {
         </div>
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {episodes.map((ep) => {
-            const hasVideo = ep.youtubeId.trim().length > 0;
-            const href = hasVideo ? `https://www.youtube.com/watch?v=${ep.youtubeId}` : YOUTUBE_CHANNEL;
+            const isYouTube = ep.platform === "youtube";
+            const PlatformIcon = isYouTube ? Youtube : Instagram;
+            const platformLabel = isYouTube ? "Assistir no YouTube" : "Ver no Instagram";
             return (
               <a
                 key={ep.n}
-                href={href}
+                href={ep.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative flex flex-col overflow-hidden border border-border/60 bg-gradient-to-br from-card to-background transition-transform hover:-translate-y-1"
               >
-                {hasVideo ? (
+                {isYouTube && ep.youtubeId ? (
                   <div className="relative aspect-video w-full overflow-hidden bg-ink">
                     <img
                       src={`https://i.ytimg.com/vi/${ep.youtubeId}/hqdefault.jpg`}
@@ -380,18 +397,24 @@ function Content() {
                     <div className="absolute inset-0 grid place-items-center bg-black/20">
                       <PlayCircle className="h-14 w-14 text-gold drop-shadow-lg" strokeWidth={1.5} />
                     </div>
+                    <div className="absolute left-3 top-3 inline-flex items-center gap-1.5 border border-gold/60 bg-background/80 px-2 py-1 text-[0.6rem] uppercase tracking-[0.25em] text-gold backdrop-blur">
+                      <Youtube className="h-3 w-3" /> YouTube
+                    </div>
                   </div>
                 ) : (
-                  <div className="flex aspect-video items-center justify-between bg-ink px-6">
+                  <div className="relative flex aspect-video items-center justify-between bg-ink px-6">
                     <span className="font-display text-6xl font-black text-gold/25">{ep.n}</span>
-                    <Mic className="h-6 w-6 text-gold" />
+                    <PlatformIcon className="h-8 w-8 text-gold" />
+                    <div className="absolute left-3 top-3 inline-flex items-center gap-1.5 border border-gold/60 bg-background/80 px-2 py-1 text-[0.6rem] uppercase tracking-[0.25em] text-gold backdrop-blur">
+                      <Instagram className="h-3 w-3" /> Instagram
+                    </div>
                   </div>
                 )}
                 <div className="flex flex-1 flex-col p-6">
                   <span className="inline-block self-start border border-gold/50 px-2 py-1 text-[0.65rem] uppercase tracking-[0.25em] text-gold">{ep.tag}</span>
                   <h3 className="mt-4 font-display text-xl uppercase leading-tight text-foreground">{ep.title}</h3>
                   <p className="mt-4 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground group-hover:text-gold transition-colors">
-                    Assistir no YouTube <ArrowRight className="h-3 w-3" />
+                    {platformLabel} <ArrowRight className="h-3 w-3" />
                   </p>
                 </div>
               </a>
@@ -416,13 +439,13 @@ function Escritorio() {
             Estrutura própria em São Paulo. Ambiente reservado, técnico e pensado para atender o empresário com a discrição que a matéria exige.
           </p>
         </div>
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
-          <div className="overflow-hidden border border-border/60">
-            <img src={fachada.url} alt="Fachada da sede Passiani Advogados em São Paulo" loading="lazy" className="aspect-[4/5] w-full object-cover md:aspect-[4/3]" />
-          </div>
-          <div className="overflow-hidden border border-border/60">
-            <img src={recepcao.url} alt="Recepção do escritório Passiani Advogados" loading="lazy" className="aspect-[4/5] w-full object-cover md:aspect-[4/3]" />
-          </div>
+        <div className="mt-12 overflow-hidden border border-border/60">
+          <img
+            src={escritorioAsset.url}
+            alt="Fachada da sede Passiani Advogados em São Paulo"
+            loading="lazy"
+            className="aspect-[4/5] w-full object-cover sm:aspect-[16/10] md:aspect-[21/9]"
+          />
         </div>
         <div className="mt-6">
           <a href={GOOGLE_MAPS} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
@@ -617,8 +640,13 @@ function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <p className="font-display text-3xl font-bold tracking-widest text-gold">PASSIANI</p>
-            <p className="mt-1 text-xs uppercase tracking-[0.3em] text-muted-foreground">Advogados</p>
+            <img
+              src={logoAsset.url}
+              alt="Passiani Advogados"
+              width={260}
+              height={80}
+              className="h-12 w-auto object-contain"
+            />
             <p className="mt-6 max-w-sm text-sm text-muted-foreground">
               Advocacia empresarial full service. A defesa começa no contrato.
             </p>
@@ -646,6 +674,9 @@ function Footer() {
         <div className="mt-12 flex flex-col gap-3 border-t border-border/60 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Passiani Advogados. Todos os direitos reservados.</p>
           <p>R. Américo Samarone, 248b · São Paulo — SP</p>
+        </div>
+        <div className="mt-4 text-center text-[0.6rem] uppercase tracking-[0.35em] text-muted-foreground/60">
+          Site desenvolvido por Daniel Passiani
         </div>
       </div>
       {/* Preserve uploaded brand banners as hidden references so build sees them */}
