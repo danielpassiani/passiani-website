@@ -3,12 +3,14 @@ import { useState } from "react";
 import {
   Shield, FileSignature, Users, AlertTriangle, Landmark, Scale,
   Star, MapPin, Phone, Mail, Instagram, Youtube, Mic, MessageCircle,
-  ArrowRight, Clock, ChevronDown, Quote,
+  ArrowRight, Clock, ChevronDown, Quote, Facebook, PlayCircle,
 } from "lucide-react";
 import headerAsset from "@/assets/passiani-header.png.asset.json";
 import footerAsset from "@/assets/passiani-footer.png.asset.json";
 import portrait from "@/assets/passiani-portrait.jpg.asset.json";
 import working from "@/assets/passiani-working.jpg.asset.json";
+import fachada from "@/assets/passiani-fachada.png.asset.json";
+import recepcao from "@/assets/passiani-recepcao.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
