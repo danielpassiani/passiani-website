@@ -32,7 +32,7 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const WHATSAPP = "https://wa.me/5511222190510?text=Olá,%20gostaria%20de%20agendar%20uma%20conversa%20com%20a%20Passiani%20Advogados.";
+const WHATSAPP = "https://wa.me/551122190510?text=Olá,%20gostaria%20de%20agendar%20uma%20conversa%20com%20a%20Passiani%20Advogados.";
 
 const YOUTUBE_CHANNEL = "https://www.youtube.com/@podissopassiani";
 const INSTAGRAM = "https://instagram.com/passianiadvogados";
