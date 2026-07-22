@@ -504,16 +504,24 @@ function Contact() {
             Agende uma conversa inicial. Vamos entender onde sua empresa está exposta e o que pode ser feito ainda esta semana.
           </p>
           <div className="mt-10 space-y-5">
-            <Info icon={MapPin} label="Endereço">R. Américo Samarone, 248b · Vila Moinho Velho, São Paulo — SP · 04284-000</Info>
-            <Info icon={Phone} label="Telefone">(11) 2219-0510 · WhatsApp (11) 9 7377-1473</Info>
+            <Info icon={MapPin} label="Endereço">
+              <a href={GOOGLE_MAPS} target="_blank" rel="noopener noreferrer" className="hover:text-gold">
+                R. Américo Samarone, 248b · Vila Moinho Velho, São Paulo — SP · 04284-000
+              </a>
+            </Info>
+            <Info icon={Phone} label="Telefone">Fixo (11) 2219-0510 · WhatsApp (11) 9 7377-1473</Info>
             <Info icon={Mail} label="E-mail">suporte@passiani.com.br</Info>
             <Info icon={Clock} label="Horário">Segunda a sexta · 09h às 18h</Info>
+            <Info icon={Scale} label="Registro profissional">Dr. Marcelo Passiani · OAB/SP 237.206 · Advogando desde 2004</Info>
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
             <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-gold">
               <MessageCircle className="h-4 w-4" /> WhatsApp
             </a>
             <a href="tel:+551122190510" className="btn-ghost-gold">Ligar agora</a>
+            <a href={GOOGLE_MAPS} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+              <MapPin className="h-4 w-4" /> Como chegar
+            </a>
           </div>
         </div>
         <ContactForm />
