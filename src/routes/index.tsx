@@ -42,13 +42,14 @@ const impact = [
 ];
 
 const episodes = [
-  { n: "01", title: "18 contratos que toda empresa deve ter", tag: "Contratos" },
+  { n: "01", title: "18 contratos que toda empresa deve ter com cada funcionário", tag: "Contratos" },
   { n: "02", title: "5 documentos para proteger o seu patrimônio", tag: "Blindagem" },
-  { n: "03", title: "Demitir sem processo: é possível?", tag: "Trabalhista" },
-  { n: "04", title: "Holding familiar: para quem e por quê", tag: "Sucessão" },
-  { n: "05", title: "PJ ou CLT? O erro que custa milhões", tag: "Trabalhista" },
-  { n: "06", title: "Como o sócio errado destrói uma empresa", tag: "Societário" },
+  { n: "03", title: "Ele não quis CLT… mas te processou depois", tag: "Trabalhista" },
+  { n: "04", title: "Contrato mal feito hoje, processo certo amanhã", tag: "Contratos" },
+  { n: "05", title: "Os 4 impostos que empresas de serviço pagam a mais todo mês", tag: "Tributário" },
+  { n: "06", title: "PJ com hora fixa não é PJ", tag: "Trabalhista" },
 ];
+
 
 const testimonials = [
   { q: "Não confio em outro escritório para cuidar da minha empresa que não seja o Passiani. Atendimento próximo, técnico e sempre um passo à frente.", a: "Cliente empresarial há 8 anos" },
