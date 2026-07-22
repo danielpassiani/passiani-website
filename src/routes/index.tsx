@@ -67,16 +67,25 @@ const impact = [
   "A defesa começa no contrato.",
 ];
 
-// Para adicionar/trocar vídeos: pegue o ID do YouTube (ex.: em https://youtu.be/ABC123 o ID é "ABC123",
-// em shorts https://www.youtube.com/shorts/ABC123 o ID também é "ABC123") e cole no campo youtubeId abaixo.
-// Deixe youtubeId vazio ("") para exibir apenas o card estático.
-const episodes: { n: string; title: string; tag: string; youtubeId: string }[] = [
-  { n: "01", title: "18 contratos que toda empresa deve ter com cada funcionário", tag: "Contratos", youtubeId: "" },
-  { n: "02", title: "5 documentos para proteger o seu patrimônio", tag: "Blindagem", youtubeId: "" },
-  { n: "03", title: "Ele não quis CLT… mas te processou depois", tag: "Trabalhista", youtubeId: "" },
-  { n: "04", title: "Contrato mal feito hoje, processo certo amanhã", tag: "Contratos", youtubeId: "" },
-  { n: "05", title: "Os 4 impostos que empresas de serviço pagam a mais todo mês", tag: "Tributário", youtubeId: "" },
-  { n: "06", title: "PJ com hora fixa não é PJ", tag: "Trabalhista", youtubeId: "" },
+// Cortes do Pod Isso Passiani: cada card aponta para o vídeo original (YouTube ou Instagram).
+// Para adicionar um novo corte, copie o link completo do post/vídeo em `url` e defina `platform`.
+// - YouTube Shorts: https://www.youtube.com/shorts/ID  → platform: "youtube", youtubeId: "ID"
+// - Instagram Reel/Post: https://www.instagram.com/p/ID/  → platform: "instagram" (não precisa youtubeId)
+type Episode = {
+  n: string;
+  title: string;
+  tag: string;
+  platform: "youtube" | "instagram";
+  url: string;
+  youtubeId?: string;
+};
+const episodes: Episode[] = [
+  { n: "01", title: "18 contratos que toda empresa deve ter com cada funcionário", tag: "Contratos", platform: "youtube", url: "https://www.youtube.com/shorts/U8J5tfjMq9c", youtubeId: "U8J5tfjMq9c" },
+  { n: "02", title: "5 documentos para proteger o seu patrimônio", tag: "Blindagem", platform: "instagram", url: "https://www.instagram.com/p/DajDYtHPlpn/" },
+  { n: "03", title: "Ele não quis CLT… mas te processou depois", tag: "Trabalhista", platform: "instagram", url: "https://www.instagram.com/p/DayYg9IMtw2/" },
+  { n: "04", title: "Contrato mal feito hoje, processo certo amanhã", tag: "Contratos", platform: "instagram", url: "https://www.instagram.com/p/Da1GI51vaCC/" },
+  { n: "05", title: "Segurança no trabalho: o que você ignora hoje pode custar caro amanhã", tag: "Prevenção", platform: "instagram", url: "https://www.instagram.com/p/DbGrX0Ys2Lc/" },
+  { n: "06", title: "Sócio de trabalho: parceria ou dor de cabeça?", tag: "Societário", platform: "instagram", url: "https://www.instagram.com/p/DaNxvWoOXDu/" },
 ];
 
 
