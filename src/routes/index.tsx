@@ -19,6 +19,11 @@ import certHonra from "@/assets/cert-honra.jpg.asset.json";
 import certCivil from "@/assets/cert-civil.jpg.asset.json";
 import certPenal from "@/assets/cert-penal.jpg.asset.json";
 import certMestre from "@/assets/cert-mestre.jpg.asset.json";
+import thumbSeguranca from "@/assets/thumb-seguranca.png.asset.json";
+import thumbClt from "@/assets/thumb-clt.png.asset.json";
+import thumb5Docs from "@/assets/thumb-5documentos.png.asset.json";
+import thumbContrato from "@/assets/thumb-contrato.png.asset.json";
+import thumbSocio from "@/assets/thumb-socio.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
@@ -78,14 +83,15 @@ type Episode = {
   platform: "youtube" | "instagram";
   url: string;
   youtubeId?: string;
+  thumb?: string;
 };
 const episodes: Episode[] = [
   { n: "01", title: "18 contratos que toda empresa deve ter com cada funcionário", tag: "Contratos", platform: "youtube", url: "https://www.youtube.com/shorts/U8J5tfjMq9c", youtubeId: "U8J5tfjMq9c" },
-  { n: "02", title: "5 documentos para proteger o seu patrimônio", tag: "Blindagem", platform: "instagram", url: "https://www.instagram.com/p/DajDYtHPlpn/" },
-  { n: "03", title: "Ele não quis CLT… mas te processou depois", tag: "Trabalhista", platform: "instagram", url: "https://www.instagram.com/p/DayYg9IMtw2/" },
-  { n: "04", title: "Contrato mal feito hoje, processo certo amanhã", tag: "Contratos", platform: "instagram", url: "https://www.instagram.com/p/Da1GI51vaCC/" },
-  { n: "05", title: "Segurança no trabalho: o que você ignora hoje pode custar caro amanhã", tag: "Prevenção", platform: "instagram", url: "https://www.instagram.com/p/DbGrX0Ys2Lc/" },
-  { n: "06", title: "Sócio de trabalho: parceria ou dor de cabeça?", tag: "Societário", platform: "instagram", url: "https://www.instagram.com/p/DaNxvWoOXDu/" },
+  { n: "02", title: "5 documentos para proteger o seu patrimônio", tag: "Blindagem", platform: "instagram", url: "https://www.instagram.com/p/DajDYtHPlpn/", thumb: thumb5Docs.url },
+  { n: "03", title: "Ele não quis CLT… mas te processou depois", tag: "Trabalhista", platform: "instagram", url: "https://www.instagram.com/p/DayYg9IMtw2/", thumb: thumbClt.url },
+  { n: "04", title: "Contrato mal feito hoje, processo certo amanhã", tag: "Contratos", platform: "instagram", url: "https://www.instagram.com/p/Da1GI51vaCC/", thumb: thumbContrato.url },
+  { n: "05", title: "Segurança no trabalho: o que você ignora hoje pode custar caro amanhã", tag: "Prevenção", platform: "instagram", url: "https://www.instagram.com/p/DbGrX0Ys2Lc/", thumb: thumbSeguranca.url },
+  { n: "06", title: "Sócio de trabalho: parceria ou dor de cabeça?", tag: "Societário", platform: "instagram", url: "https://www.instagram.com/p/DaNxvWoOXDu/", thumb: thumbSocio.url },
 ];
 
 
@@ -387,12 +393,12 @@ function Content() {
                 className="group relative flex flex-col overflow-hidden border border-border/60 bg-gradient-to-br from-card to-background transition-transform hover:-translate-y-1"
               >
                 {isYouTube && ep.youtubeId ? (
-                  <div className="relative aspect-video w-full overflow-hidden bg-ink">
+                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink">
                     <img
                       src={`https://i.ytimg.com/vi/${ep.youtubeId}/hqdefault.jpg`}
                       alt={ep.title}
                       loading="lazy"
-                      className="h-full w-full object-cover opacity-80 transition-opacity group-hover:opacity-100"
+                      className="h-full w-full object-cover opacity-90 transition-opacity group-hover:opacity-100"
                     />
                     <div className="absolute inset-0 grid place-items-center bg-black/20">
                       <PlayCircle className="h-14 w-14 text-gold drop-shadow-lg" strokeWidth={1.5} />
@@ -401,8 +407,22 @@ function Content() {
                       <Youtube className="h-3 w-3" /> YouTube
                     </div>
                   </div>
+                ) : ep.thumb ? (
+                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink">
+                    <img
+                      src={ep.thumb}
+                      alt={ep.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                    <div className="absolute left-3 top-3 inline-flex items-center gap-1.5 border border-gold/60 bg-background/80 px-2 py-1 text-[0.6rem] uppercase tracking-[0.25em] text-gold backdrop-blur">
+                      <Instagram className="h-3 w-3" /> Instagram
+                    </div>
+                    <PlayCircle className="absolute bottom-3 right-3 h-10 w-10 text-gold drop-shadow-lg opacity-90 group-hover:opacity-100" strokeWidth={1.5} />
+                  </div>
                 ) : (
-                  <div className="relative flex aspect-video items-center justify-between bg-ink px-6">
+                  <div className="relative flex aspect-[4/5] items-center justify-between bg-ink px-6">
                     <span className="font-display text-6xl font-black text-gold/25">{ep.n}</span>
                     <PlatformIcon className="h-8 w-8 text-gold" />
                     <div className="absolute left-3 top-3 inline-flex items-center gap-1.5 border border-gold/60 bg-background/80 px-2 py-1 text-[0.6rem] uppercase tracking-[0.25em] text-gold backdrop-blur">
