@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   Shield, FileSignature, Users, AlertTriangle, Landmark, Scale,
-  Star, MapPin, Phone, Mail, Instagram, Youtube, Mic, MessageCircle,
+  Star, MapPin, Phone, Mail, Instagram, Youtube, MessageCircle,
   ArrowRight, Clock, ChevronDown, Quote, Facebook, PlayCircle,
   BookOpen, GraduationCap, Award, Sparkles,
 } from "lucide-react";
