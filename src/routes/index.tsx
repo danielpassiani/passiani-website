@@ -410,10 +410,6 @@ function Escritorio() {
     </section>
   );
 }
-      </div>
-    </section>
-  );
-}
 
 function Testimonials() {
   return (
