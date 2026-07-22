@@ -47,6 +47,7 @@ const certificates = [
   { img: certOab.url, title: "Certificado de Compromisso OAB/SP", org: "Ordem dos Advogados do Brasil — Secção SP", year: "2005" },
   { img: certHonra.url, title: "Diploma Honra ao Mérito", org: "OAB-SP · Assistência Judiciária", year: "2006" },
   { img: certCivil.url, title: "Especialista em Direito Civil", org: "Escola Paulista de Direito — EPD", year: "2007" },
+  { img: certPenal.url, title: "Especialista em Direito Penal e Processual Penal", org: "Faculdade Escola Paulista de Direito — EPD", year: "2018" },
   { img: certMestre.url, title: "Mestre em Função Social do Direito", org: "Faculdade Autônoma de Direito — FADISP", year: "2017" },
 ];
 
