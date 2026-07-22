@@ -222,6 +222,16 @@ function About() {
           </div>
         </div>
         <div className="relative">
+          <div className="relative mb-8 overflow-hidden border border-border/60">
+            <img
+              src={working.url}
+              alt="Dr. Marcelo Passiani no escritório"
+              width={1920}
+              height={1280}
+              loading="lazy"
+              className="aspect-[5/4] w-full object-cover"
+            />
+          </div>
           <div className="border-l-2 border-gold pl-6">
             <Quote className="h-8 w-8 text-gold" />
             <p className="mt-4 font-serif text-2xl leading-snug text-foreground sm:text-3xl">
@@ -230,11 +240,12 @@ function About() {
             </p>
             <p className="mt-6 font-display text-sm uppercase tracking-[0.3em] text-gold">— Dr. Marcelo Passiani</p>
           </div>
-          <div className="mt-10 grid grid-cols-2 gap-4">
+          <div className="mt-8 grid grid-cols-2 gap-4">
             <Card label="Metodologia" title="Diagnóstico → Blindagem → Manutenção" />
             <Card label="Atuação" title="Advocacia preventiva e contenciosa" />
           </div>
         </div>
+
       </div>
     </section>
   );
