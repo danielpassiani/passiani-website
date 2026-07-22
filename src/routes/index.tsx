@@ -226,7 +226,7 @@ function About() {
             </p>
           </div>
           <div className="mt-10 grid grid-cols-3 gap-6 border-t border-border/60 pt-8">
-            <Stat n="25" label="anos de atuação" />
+            <Stat n="22+" label="anos de atuação" />
             <Stat n="500+" label="empresas atendidas" />
             <Stat n="4,9" label="★ no Google" />
           </div>
