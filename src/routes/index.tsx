@@ -100,7 +100,7 @@ function Nav() {
     { href: "#sobre", label: "Sobre" },
     { href: "#atuacao", label: "Áreas" },
     { href: "#conteudo", label: "Conteúdo" },
-    { href: "#depoimentos", label: "Depoimentos" },
+    { href: "#escritorio", label: "Escritório" },
     { href: "#contato", label: "Contato" },
   ];
   return (
