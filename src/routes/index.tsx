@@ -657,13 +657,13 @@ function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <img
-              src={logoAsset.url}
-              alt="Passiani Advogados"
-              width={260}
-              height={80}
-              className="h-12 w-auto object-contain"
-            />
+            <div className="flex flex-col gap-2">
+              <span className="wordmark text-2xl">
+                <span>Passiani</span>
+              </span>
+              <span className="wordmark-sub text-[11px] tracking-[0.5em]">Advogados</span>
+              <span className="mt-2 h-px w-16 bg-gradient-to-r from-gold to-transparent" />
+            </div>
             <p className="mt-6 max-w-sm text-sm text-muted-foreground">
               Advocacia empresarial full service. A defesa começa no contrato.
             </p>
