@@ -4,6 +4,7 @@ import {
   Shield, FileSignature, Users, AlertTriangle, Landmark, Scale,
   Star, MapPin, Phone, Mail, Instagram, Youtube, Mic, MessageCircle,
   ArrowRight, Clock, ChevronDown, Quote, Facebook, PlayCircle,
+  BookOpen, GraduationCap, Award, Sparkles,
 } from "lucide-react";
 import headerAsset from "@/assets/passiani-header.png.asset.json";
 import footerAsset from "@/assets/passiani-footer.png.asset.json";
@@ -11,6 +12,12 @@ import portrait from "@/assets/passiani-portrait.jpg.asset.json";
 import working from "@/assets/passiani-working.jpg.asset.json";
 import fachada from "@/assets/passiani-fachada.png.asset.json";
 import recepcao from "@/assets/passiani-recepcao.png.asset.json";
+import penseBemCover from "@/assets/pense-bem-cover.png.asset.json";
+import certBacharel from "@/assets/cert-bacharel.jpg.asset.json";
+import certOab from "@/assets/cert-oab.jpg.asset.json";
+import certHonra from "@/assets/cert-honra.jpg.asset.json";
+import certCivil from "@/assets/cert-civil.jpg.asset.json";
+import certMestre from "@/assets/cert-mestre.jpg.asset.json";
 
 
 export const Route = createFileRoute("/")({
