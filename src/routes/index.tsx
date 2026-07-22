@@ -98,8 +98,11 @@ function Home() {
       <Hero />
       <Marquee />
       <About />
+      <Credentials />
       <Areas />
       <Content />
+      <Masterclass />
+      <Book />
       <Escritorio />
       <Testimonials />
       <SocialProof />
@@ -117,6 +120,8 @@ function Nav() {
     { href: "#sobre", label: "Sobre" },
     { href: "#atuacao", label: "Áreas" },
     { href: "#conteudo", label: "Conteúdo" },
+    { href: "#masterclass", label: "Masterclass" },
+    { href: "#livro", label: "Livro" },
     { href: "#escritorio", label: "Escritório" },
     { href: "#contato", label: "Contato" },
   ];
