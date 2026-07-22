@@ -655,6 +655,166 @@ function Footer() {
   );
 }
 
+function Credentials() {
+  return (
+    <section id="credenciais" className="border-b border-border/50 bg-ink">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+        <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
+          <div className="max-w-2xl">
+            <span className="eyebrow"><span className="gold-rule" /> Formação & titulação</span>
+            <h2 className="headline mt-5 text-4xl sm:text-5xl md:text-6xl">
+              Autoridade que se <span className="gold-gradient">comprova</span>.
+            </h2>
+            <p className="mt-5 text-muted-foreground">
+              Bacharel, especialista e <strong className="text-foreground">Mestre em Função Social do Direito</strong>. Quase duas décadas de formação continuada
+              a serviço do empresário brasileiro.
+            </p>
+          </div>
+          <div className="flex items-center gap-3 text-gold">
+            <GraduationCap className="h-6 w-6" />
+            <Award className="h-6 w-6" />
+            <Sparkles className="h-6 w-6" />
+          </div>
+        </div>
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {certificates.map((c) => (
+            <figure key={c.title} className="group flex flex-col border border-border/60 bg-background transition-transform hover:-translate-y-1">
+              <div className="relative aspect-[4/3] overflow-hidden bg-ink">
+                <img
+                  src={c.img}
+                  alt={`Certificado — ${c.title}`}
+                  loading="lazy"
+                  className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute right-3 top-3 border border-gold/60 bg-background/80 px-2 py-1 font-display text-[0.65rem] uppercase tracking-[0.25em] text-gold backdrop-blur">
+                  {c.year}
+                </div>
+              </div>
+              <figcaption className="flex flex-1 flex-col p-6">
+                <p className="font-display text-lg uppercase leading-tight text-foreground">{c.title}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{c.org}</p>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Masterclass() {
+  return (
+    <section id="masterclass" className="relative overflow-hidden border-b border-border/50">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,oklch(0.82_0.12_84/0.12),transparent_55%),radial-gradient(circle_at_85%_80%,oklch(0.82_0.12_84/0.10),transparent_55%)]" />
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 md:grid-cols-[1.1fr_1fr] md:items-center md:py-28 lg:px-8">
+        <div>
+          <span className="eyebrow"><span className="gold-rule" /> Masterclass oficial</span>
+          <h2 className="headline mt-5 text-4xl sm:text-5xl md:text-6xl">
+            Método <span className="gold-gradient">Contratação Blindada</span>.
+          </h2>
+          <p className="mt-6 max-w-xl text-lg text-muted-foreground">
+            O passo a passo que já protegeu centenas de empresários contra passivos trabalhistas.
+            Aprenda como contratar CLT ou PJ sem abrir brechas para processos futuros — direto com Dr. Marcelo Passiani.
+          </p>
+          <ul className="mt-8 space-y-3 text-sm text-foreground">
+            {[
+              "Aulas objetivas com aplicação prática imediata",
+              "Modelos de contratos e checklists de contratação",
+              "Baseado em 20+ anos defendendo empresas na Justiça do Trabalho",
+              "Acesso pela plataforma oficial Hotmart",
+            ].map((li) => (
+              <li key={li} className="flex items-start gap-3">
+                <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rotate-45 bg-gold" />
+                {li}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-10 flex flex-wrap gap-3">
+            <a href={MASTERCLASS} target="_blank" rel="noopener noreferrer" className="btn-gold">
+              Acessar a Masterclass <ArrowRight className="h-4 w-4" />
+            </a>
+            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+              Tirar dúvidas
+            </a>
+          </div>
+        </div>
+        <div className="relative">
+          <div className="border border-gold/40 bg-card/60 p-8 shadow-[0_20px_60px_-20px_oklch(0.82_0.12_84/0.35)]">
+            <p className="font-display text-[0.65rem] uppercase tracking-[0.35em] text-gold">Curso online</p>
+            <p className="mt-4 font-serif text-3xl leading-tight text-foreground sm:text-4xl">
+              "Menos processo trabalhista. Mais previsibilidade no seu negócio."
+            </p>
+            <div className="mt-8 grid grid-cols-3 gap-4 border-t border-border/60 pt-6 text-center">
+              <div>
+                <p className="font-display text-3xl font-bold text-gold">100%</p>
+                <p className="mt-1 text-[0.65rem] uppercase tracking-widest text-muted-foreground">Online</p>
+              </div>
+              <div>
+                <p className="font-display text-3xl font-bold text-gold">Hotmart</p>
+                <p className="mt-1 text-[0.65rem] uppercase tracking-widest text-muted-foreground">Plataforma</p>
+              </div>
+              <div>
+                <p className="font-display text-3xl font-bold text-gold">Prático</p>
+                <p className="mt-1 text-[0.65rem] uppercase tracking-widest text-muted-foreground">Formato</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Book() {
+  return (
+    <section id="livro" className="border-b border-border/50 bg-ink">
+      <div className="mx-auto grid max-w-7xl gap-14 px-4 py-20 sm:px-6 md:grid-cols-[auto_1fr] md:items-center md:py-28 lg:px-8">
+        <div className="relative mx-auto w-full max-w-xs md:max-w-sm">
+          <div className="pointer-events-none absolute -inset-6 -z-10 bg-[radial-gradient(circle_at_50%_50%,oklch(0.82_0.12_84/0.25),transparent_70%)]" />
+          <div className="overflow-hidden border border-gold/40 shadow-[0_30px_80px_-20px_oklch(0_0_0/0.7)]">
+            <img
+              src={penseBemCover.url}
+              alt="Capa do livro Pense Bem, de Marcelo Passiani"
+              loading="lazy"
+              className="aspect-[2/3] w-full object-cover"
+            />
+          </div>
+        </div>
+        <div>
+          <span className="eyebrow"><span className="gold-rule" /> Livro do autor</span>
+          <h2 className="headline mt-5 text-4xl sm:text-5xl md:text-6xl">
+            <span className="gold-gradient">Pense Bem</span>
+          </h2>
+          <p className="mt-3 font-serif text-lg italic text-muted-foreground">por Marcelo Passiani</p>
+          <p className="mt-6 text-muted-foreground">
+            Marcelo Passiani reúne neste livro pensamentos que foram inspiradores para o autoconhecimento de suas próprias emoções.
+            Uma leitura que provoca uma reação para que se possa interpretar a vida não como ela é, mas como <em>deve ser</em>.
+          </p>
+          <p className="mt-4 text-muted-foreground">
+            São relatos hoje vivenciados de forma positiva, mas que por muito tempo foram considerados negativos —
+            situações que acontecem na vida de inúmeras pessoas e que ajudam a compreender os motivos e os porquês da própria existência.
+            O autor demonstra que viver lamentando as próprias imperfeições é viver sem se conhecer, e que o ser humano que se conhece descobre o brilho
+            que sempre teve.
+          </p>
+          <blockquote className="mt-8 border-l-2 border-gold pl-6 font-serif text-xl leading-snug text-foreground">
+            "Quando for o momento para a decisão da virada, <span className="text-gold">pense bem</span>."
+          </blockquote>
+          <div className="mt-10 flex flex-wrap gap-3">
+            <a href={AMAZON_BOOK} target="_blank" rel="noopener noreferrer" className="btn-gold">
+              <BookOpen className="h-4 w-4" /> Comprar na Amazon
+            </a>
+            <a href={AMAZON_BOOK} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+              Ler mais sobre o livro
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+
 function WhatsAppFloat() {
   return (
     <a
