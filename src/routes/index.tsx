@@ -7,7 +7,9 @@ import {
 } from "lucide-react";
 import headerAsset from "@/assets/passiani-header.png.asset.json";
 import footerAsset from "@/assets/passiani-footer.png.asset.json";
-import portrait from "@/assets/marcelo-portrait.jpg";
+import portrait from "@/assets/passiani-portrait.jpg.asset.json";
+import working from "@/assets/passiani-working.jpg.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -40,13 +42,14 @@ const impact = [
 ];
 
 const episodes = [
-  { n: "01", title: "18 contratos que toda empresa deve ter", tag: "Contratos" },
+  { n: "01", title: "18 contratos que toda empresa deve ter com cada funcionário", tag: "Contratos" },
   { n: "02", title: "5 documentos para proteger o seu patrimônio", tag: "Blindagem" },
-  { n: "03", title: "Demitir sem processo: é possível?", tag: "Trabalhista" },
-  { n: "04", title: "Holding familiar: para quem e por quê", tag: "Sucessão" },
-  { n: "05", title: "PJ ou CLT? O erro que custa milhões", tag: "Trabalhista" },
-  { n: "06", title: "Como o sócio errado destrói uma empresa", tag: "Societário" },
+  { n: "03", title: "Ele não quis CLT… mas te processou depois", tag: "Trabalhista" },
+  { n: "04", title: "Contrato mal feito hoje, processo certo amanhã", tag: "Contratos" },
+  { n: "05", title: "Os 4 impostos que empresas de serviço pagam a mais todo mês", tag: "Tributário" },
+  { n: "06", title: "PJ com hora fixa não é PJ", tag: "Trabalhista" },
 ];
+
 
 const testimonials = [
   { q: "Não confio em outro escritório para cuidar da minha empresa que não seja o Passiani. Atendimento próximo, técnico e sempre um passo à frente.", a: "Cliente empresarial há 8 anos" },
@@ -160,11 +163,12 @@ function Hero() {
           <div className="pointer-events-none absolute -inset-6 -z-10 rounded-sm bg-[radial-gradient(circle_at_50%_50%,oklch(0.78_0.13_82/0.18),transparent_70%)]" />
           <div className="relative overflow-hidden border border-border/60">
             <img
-              src={portrait}
-              alt="Marcelo Passiani — Advogado responsável"
-              width={1024}
+              src={portrait.url}
+              alt="Dr. Marcelo Passiani — Advogado responsável pela Passiani Advogados"
+              width={1920}
               height={1280}
-              className="h-full w-full object-cover grayscale contrast-110"
+              className="aspect-[4/5] h-full w-full object-cover object-top grayscale contrast-110"
+
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/70 to-transparent p-6">
               <p className="font-display text-xs uppercase tracking-[0.3em] text-gold">Dr. Marcelo Passiani</p>
@@ -218,6 +222,16 @@ function About() {
           </div>
         </div>
         <div className="relative">
+          <div className="relative mb-8 overflow-hidden border border-border/60">
+            <img
+              src={working.url}
+              alt="Dr. Marcelo Passiani no escritório"
+              width={1920}
+              height={1280}
+              loading="lazy"
+              className="aspect-[5/4] w-full object-cover"
+            />
+          </div>
           <div className="border-l-2 border-gold pl-6">
             <Quote className="h-8 w-8 text-gold" />
             <p className="mt-4 font-serif text-2xl leading-snug text-foreground sm:text-3xl">
@@ -226,11 +240,12 @@ function About() {
             </p>
             <p className="mt-6 font-display text-sm uppercase tracking-[0.3em] text-gold">— Dr. Marcelo Passiani</p>
           </div>
-          <div className="mt-10 grid grid-cols-2 gap-4">
+          <div className="mt-8 grid grid-cols-2 gap-4">
             <Card label="Metodologia" title="Diagnóstico → Blindagem → Manutenção" />
             <Card label="Atuação" title="Advocacia preventiva e contenciosa" />
           </div>
         </div>
+
       </div>
     </section>
   );
@@ -298,10 +313,10 @@ function Content() {
             </p>
           </div>
           <div className="flex gap-3">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+            <a href="https://instagram.com/passianiadvogados" target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
               <Instagram className="h-4 w-4" /> Instagram
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+            <a href="https://youtube.com/@passianiadvogados" target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
               <Youtube className="h-4 w-4" /> YouTube
             </a>
           </div>
@@ -522,8 +537,8 @@ function Footer() {
           <div>
             <p className="font-display text-sm uppercase tracking-[0.3em] text-gold">Siga</p>
             <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-              <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Instagram className="h-4 w-4" /> Instagram</a></li>
-              <li><a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Youtube className="h-4 w-4" /> YouTube · Pod Isso Passiani</a></li>
+              <li><a href="https://instagram.com/passianiadvogados" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Instagram className="h-4 w-4" /> Instagram</a></li>
+              <li><a href="https://youtube.com/@passianiadvogados" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Youtube className="h-4 w-4" /> YouTube · Pod Isso Passiani</a></li>
               <li><a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><MessageCircle className="h-4 w-4" /> WhatsApp</a></li>
             </ul>
           </div>
