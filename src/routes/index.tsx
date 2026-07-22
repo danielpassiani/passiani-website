@@ -213,7 +213,7 @@ function About() {
         <div>
           <span className="eyebrow"><span className="gold-rule" /> Sobre o escritório</span>
           <h2 className="headline mt-5 text-4xl sm:text-5xl md:text-6xl">
-            25 anos <br /><span className="gold-gradient">protegendo</span> empresários.
+            Mais de 20 anos <br /><span className="gold-gradient">protegendo</span> empresários.
           </h2>
           <div className="mt-8 space-y-5 text-muted-foreground">
             <p className="text-lg">
