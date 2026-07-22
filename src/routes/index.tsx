@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import headerAsset from "@/assets/passiani-header.png.asset.json";
 import footerAsset from "@/assets/passiani-footer.png.asset.json";
-import logoAsset from "@/assets/passiani-logo.jpg.asset.json";
+
 import portrait from "@/assets/passiani-portrait.jpg.asset.json";
 import working from "@/assets/passiani-working.jpg.asset.json";
 import escritorioAsset from "@/assets/passiani-escritorio.png.asset.json";
