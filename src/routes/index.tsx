@@ -146,13 +146,10 @@ function Nav() {
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
       <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <a href="#top" className="flex min-w-0 items-center gap-3" aria-label="Passiani Advogados — Início">
-          <img
-            src={logoAsset.url}
-            alt="Passiani Advogados"
-            width={220}
-            height={64}
-            className="h-9 w-auto object-contain sm:h-10"
-          />
+          <span className="wordmark text-[15px] sm:text-[17px]">
+            <span>Passiani</span>
+            <span className="wordmark-sub text-[10px] sm:text-[11px] opacity-90">Advogados</span>
+          </span>
         </a>
         <nav className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
