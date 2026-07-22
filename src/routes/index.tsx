@@ -32,12 +32,22 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const WHATSAPP = "https://wa.me/5511973771473?text=Olá,%20gostaria%20de%20agendar%20uma%20conversa%20com%20a%20Passiani%20Advogados.";
+const WHATSAPP = "https://wa.me/5511222190510?text=Olá,%20gostaria%20de%20agendar%20uma%20conversa%20com%20a%20Passiani%20Advogados.";
 
 const YOUTUBE_CHANNEL = "https://www.youtube.com/@podissopassiani";
 const INSTAGRAM = "https://instagram.com/passianiadvogados";
 const FACEBOOK = "https://web.facebook.com/profile.php?id=61589470156729";
 const GOOGLE_MAPS = "https://maps.app.goo.gl/2MQjUMUksJyG5FfV7";
+const MASTERCLASS = "https://hotmart.com/pt-br/marketplace/produtos/masterclass-metodo-contratacao-blindada/O101373502C";
+const AMAZON_BOOK = "https://www.amazon.com.br/Pense-Bem-Marcelo-Passiani/dp/8590632105";
+
+const certificates = [
+  { img: certBacharel.url, title: "Bacharel em Direito", org: "Centro Universitário Estácio Radial de São Paulo", year: "2005" },
+  { img: certOab.url, title: "Certificado de Compromisso OAB/SP", org: "Ordem dos Advogados do Brasil — Secção SP", year: "2005" },
+  { img: certHonra.url, title: "Diploma Honra ao Mérito", org: "OAB-SP · Assistência Judiciária", year: "2006" },
+  { img: certCivil.url, title: "Especialista em Direito Civil", org: "Escola Paulista de Direito — EPD", year: "2007" },
+  { img: certMestre.url, title: "Mestre em Função Social do Direito", org: "Faculdade Autônoma de Direito — FADISP", year: "2017" },
+];
 
 const areas = [
   { icon: Shield, title: "Blindagem Patrimonial", desc: "Holdings, reorganização societária e proteção de bens pessoais contra riscos empresariais." },
