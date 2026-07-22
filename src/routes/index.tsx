@@ -3,12 +3,14 @@ import { useState } from "react";
 import {
   Shield, FileSignature, Users, AlertTriangle, Landmark, Scale,
   Star, MapPin, Phone, Mail, Instagram, Youtube, Mic, MessageCircle,
-  ArrowRight, Clock, ChevronDown, Quote,
+  ArrowRight, Clock, ChevronDown, Quote, Facebook, PlayCircle,
 } from "lucide-react";
 import headerAsset from "@/assets/passiani-header.png.asset.json";
 import footerAsset from "@/assets/passiani-footer.png.asset.json";
 import portrait from "@/assets/passiani-portrait.jpg.asset.json";
 import working from "@/assets/passiani-working.jpg.asset.json";
+import fachada from "@/assets/passiani-fachada.png.asset.json";
+import recepcao from "@/assets/passiani-recepcao.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
@@ -24,6 +26,11 @@ export const Route = createFileRoute("/")({
 });
 
 const WHATSAPP = "https://wa.me/5511973771473?text=Olá,%20gostaria%20de%20agendar%20uma%20conversa%20com%20a%20Passiani%20Advogados.";
+
+const YOUTUBE_CHANNEL = "https://www.youtube.com/@podissopassiani";
+const INSTAGRAM = "https://instagram.com/passianiadvogados";
+const FACEBOOK = "https://web.facebook.com/profile.php?id=61589470156729";
+const GOOGLE_MAPS = "https://maps.app.goo.gl/2MQjUMUksJyG5FfV7";
 
 const areas = [
   { icon: Shield, title: "Blindagem Patrimonial", desc: "Holdings, reorganização societária e proteção de bens pessoais contra riscos empresariais." },
@@ -41,13 +48,16 @@ const impact = [
   "A defesa começa no contrato.",
 ];
 
-const episodes = [
-  { n: "01", title: "18 contratos que toda empresa deve ter com cada funcionário", tag: "Contratos" },
-  { n: "02", title: "5 documentos para proteger o seu patrimônio", tag: "Blindagem" },
-  { n: "03", title: "Ele não quis CLT… mas te processou depois", tag: "Trabalhista" },
-  { n: "04", title: "Contrato mal feito hoje, processo certo amanhã", tag: "Contratos" },
-  { n: "05", title: "Os 4 impostos que empresas de serviço pagam a mais todo mês", tag: "Tributário" },
-  { n: "06", title: "PJ com hora fixa não é PJ", tag: "Trabalhista" },
+// Para adicionar/trocar vídeos: pegue o ID do YouTube (ex.: em https://youtu.be/ABC123 o ID é "ABC123",
+// em shorts https://www.youtube.com/shorts/ABC123 o ID também é "ABC123") e cole no campo youtubeId abaixo.
+// Deixe youtubeId vazio ("") para exibir apenas o card estático.
+const episodes: { n: string; title: string; tag: string; youtubeId: string }[] = [
+  { n: "01", title: "18 contratos que toda empresa deve ter com cada funcionário", tag: "Contratos", youtubeId: "" },
+  { n: "02", title: "5 documentos para proteger o seu patrimônio", tag: "Blindagem", youtubeId: "" },
+  { n: "03", title: "Ele não quis CLT… mas te processou depois", tag: "Trabalhista", youtubeId: "" },
+  { n: "04", title: "Contrato mal feito hoje, processo certo amanhã", tag: "Contratos", youtubeId: "" },
+  { n: "05", title: "Os 4 impostos que empresas de serviço pagam a mais todo mês", tag: "Tributário", youtubeId: "" },
+  { n: "06", title: "PJ com hora fixa não é PJ", tag: "Trabalhista", youtubeId: "" },
 ];
 
 
@@ -73,6 +83,7 @@ function Home() {
       <About />
       <Areas />
       <Content />
+      <Escritorio />
       <Testimonials />
       <SocialProof />
       <Faq />
@@ -89,7 +100,7 @@ function Nav() {
     { href: "#sobre", label: "Sobre" },
     { href: "#atuacao", label: "Áreas" },
     { href: "#conteudo", label: "Conteúdo" },
-    { href: "#depoimentos", label: "Depoimentos" },
+    { href: "#escritorio", label: "Escritório" },
     { href: "#contato", label: "Contato" },
   ];
   return (
@@ -136,12 +147,12 @@ function Hero() {
     <section id="top" className="relative overflow-hidden border-b border-border/50">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-[1.15fr_1fr] md:gap-14 md:py-24 lg:px-8 lg:py-32">
         <div className="relative z-10 flex flex-col justify-center">
-          <span className="eyebrow"><span className="gold-rule" /> Advocacia Empresarial · Desde 2000</span>
+          <span className="eyebrow"><span className="gold-rule" /> Advocacia Empresarial · Desde 2004</span>
           <h1 className="headline mt-6 text-5xl text-foreground sm:text-6xl md:text-7xl lg:text-[5.5rem]">
             A defesa <span className="gold-gradient">começa</span> no contrato.
           </h1>
           <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
-            Há 25 anos protegendo pequenos e médios empresários com advocacia full service.
+            Há mais de 20 anos protegendo pequenos e médios empresários com advocacia full service.
             <strong className="text-foreground"> Menos processo, mais lucro.</strong>
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -172,7 +183,7 @@ function Hero() {
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/70 to-transparent p-6">
               <p className="font-display text-xs uppercase tracking-[0.3em] text-gold">Dr. Marcelo Passiani</p>
-              <p className="mt-1 text-sm text-muted-foreground">OAB · Advogado responsável</p>
+              <p className="mt-1 text-sm text-muted-foreground">OAB/SP 237.206 · Advogado responsável</p>
             </div>
           </div>
         </div>
@@ -203,7 +214,7 @@ function About() {
         <div>
           <span className="eyebrow"><span className="gold-rule" /> Sobre o escritório</span>
           <h2 className="headline mt-5 text-4xl sm:text-5xl md:text-6xl">
-            25 anos <br /><span className="gold-gradient">protegendo</span> empresários.
+            Mais de 20 anos <br /><span className="gold-gradient">protegendo</span> empresários.
           </h2>
           <div className="mt-8 space-y-5 text-muted-foreground">
             <p className="text-lg">
@@ -216,7 +227,7 @@ function About() {
             </p>
           </div>
           <div className="mt-10 grid grid-cols-3 gap-6 border-t border-border/60 pt-8">
-            <Stat n="25" label="anos de atuação" />
+            <Stat n="22+" label="anos de atuação" />
             <Stat n="500+" label="empresas atendidas" />
             <Stat n="4,9" label="★ no Google" />
           </div>
@@ -312,31 +323,89 @@ function Content() {
               e mostram, na prática, o que sua empresa precisa fazer hoje.
             </p>
           </div>
-          <div className="flex gap-3">
-            <a href="https://instagram.com/passianiadvogados" target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+          <div className="flex flex-wrap gap-3">
+            <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
               <Instagram className="h-4 w-4" /> Instagram
             </a>
-            <a href="https://youtube.com/@passianiadvogados" target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+            <a href={YOUTUBE_CHANNEL} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
               <Youtube className="h-4 w-4" /> YouTube
+            </a>
+            <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+              <Facebook className="h-4 w-4" /> Facebook
             </a>
           </div>
         </div>
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {episodes.map((ep) => (
-            <article key={ep.n} className="group relative flex aspect-[4/5] flex-col justify-between overflow-hidden border border-border/60 bg-gradient-to-br from-card to-background p-6 transition-transform hover:-translate-y-1">
-              <div className="flex items-center justify-between">
-                <span className="font-display text-6xl font-black text-gold/20 group-hover:text-gold/40 transition-colors">{ep.n}</span>
-                <Mic className="h-5 w-5 text-gold" />
-              </div>
-              <div>
-                <span className="inline-block border border-gold/50 px-2 py-1 text-[0.65rem] uppercase tracking-[0.25em] text-gold">{ep.tag}</span>
-                <h3 className="mt-4 font-display text-2xl uppercase leading-tight text-foreground">{ep.title}</h3>
-                <p className="mt-4 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground group-hover:text-gold transition-colors">
-                  Assistir episódio <ArrowRight className="h-3 w-3" />
-                </p>
-              </div>
-            </article>
-          ))}
+          {episodes.map((ep) => {
+            const hasVideo = ep.youtubeId.trim().length > 0;
+            const href = hasVideo ? `https://www.youtube.com/watch?v=${ep.youtubeId}` : YOUTUBE_CHANNEL;
+            return (
+              <a
+                key={ep.n}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex flex-col overflow-hidden border border-border/60 bg-gradient-to-br from-card to-background transition-transform hover:-translate-y-1"
+              >
+                {hasVideo ? (
+                  <div className="relative aspect-video w-full overflow-hidden bg-ink">
+                    <img
+                      src={`https://i.ytimg.com/vi/${ep.youtubeId}/hqdefault.jpg`}
+                      alt={ep.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover opacity-80 transition-opacity group-hover:opacity-100"
+                    />
+                    <div className="absolute inset-0 grid place-items-center bg-black/20">
+                      <PlayCircle className="h-14 w-14 text-gold drop-shadow-lg" strokeWidth={1.5} />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex aspect-video items-center justify-between bg-ink px-6">
+                    <span className="font-display text-6xl font-black text-gold/25">{ep.n}</span>
+                    <Mic className="h-6 w-6 text-gold" />
+                  </div>
+                )}
+                <div className="flex flex-1 flex-col p-6">
+                  <span className="inline-block self-start border border-gold/50 px-2 py-1 text-[0.65rem] uppercase tracking-[0.25em] text-gold">{ep.tag}</span>
+                  <h3 className="mt-4 font-display text-xl uppercase leading-tight text-foreground">{ep.title}</h3>
+                  <p className="mt-4 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground group-hover:text-gold transition-colors">
+                    Assistir no YouTube <ArrowRight className="h-3 w-3" />
+                  </p>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Escritorio() {
+  return (
+    <section id="escritorio" className="border-b border-border/50">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+        <div className="max-w-2xl">
+          <span className="eyebrow"><span className="gold-rule" /> Nosso escritório</span>
+          <h2 className="headline mt-5 text-4xl sm:text-5xl md:text-6xl">
+            Onde a sua empresa <span className="gold-gradient">é recebida</span>.
+          </h2>
+          <p className="mt-5 text-muted-foreground">
+            Estrutura própria em São Paulo. Ambiente reservado, técnico e pensado para atender o empresário com a discrição que a matéria exige.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
+          <div className="overflow-hidden border border-border/60">
+            <img src={fachada.url} alt="Fachada da sede Passiani Advogados em São Paulo" loading="lazy" className="aspect-[4/5] w-full object-cover md:aspect-[4/3]" />
+          </div>
+          <div className="overflow-hidden border border-border/60">
+            <img src={recepcao.url} alt="Recepção do escritório Passiani Advogados" loading="lazy" className="aspect-[4/5] w-full object-cover md:aspect-[4/3]" />
+          </div>
+        </div>
+        <div className="mt-6">
+          <a href={GOOGLE_MAPS} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+            <MapPin className="h-4 w-4" /> Ver no Google Maps
+          </a>
         </div>
       </div>
     </section>
@@ -435,16 +504,24 @@ function Contact() {
             Agende uma conversa inicial. Vamos entender onde sua empresa está exposta e o que pode ser feito ainda esta semana.
           </p>
           <div className="mt-10 space-y-5">
-            <Info icon={MapPin} label="Endereço">R. Américo Samarone, 248b · Vila Moinho Velho, São Paulo — SP · 04284-000</Info>
-            <Info icon={Phone} label="Telefone">(11) 2219-0510 · WhatsApp (11) 9 7377-1473</Info>
+            <Info icon={MapPin} label="Endereço">
+              <a href={GOOGLE_MAPS} target="_blank" rel="noopener noreferrer" className="hover:text-gold">
+                R. Américo Samarone, 248b · Vila Moinho Velho, São Paulo — SP · 04284-000
+              </a>
+            </Info>
+            <Info icon={Phone} label="Telefone">Fixo (11) 2219-0510 · WhatsApp (11) 9 7377-1473</Info>
             <Info icon={Mail} label="E-mail">suporte@passiani.com.br</Info>
             <Info icon={Clock} label="Horário">Segunda a sexta · 09h às 18h</Info>
+            <Info icon={Scale} label="Registro profissional">Dr. Marcelo Passiani · OAB/SP 237.206 · Advogando desde 2004</Info>
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
             <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-gold">
               <MessageCircle className="h-4 w-4" /> WhatsApp
             </a>
             <a href="tel:+551122190510" className="btn-ghost-gold">Ligar agora</a>
+            <a href={GOOGLE_MAPS} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+              <MapPin className="h-4 w-4" /> Como chegar
+            </a>
           </div>
         </div>
         <ContactForm />
@@ -537,8 +614,9 @@ function Footer() {
           <div>
             <p className="font-display text-sm uppercase tracking-[0.3em] text-gold">Siga</p>
             <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-              <li><a href="https://instagram.com/passianiadvogados" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Instagram className="h-4 w-4" /> Instagram</a></li>
-              <li><a href="https://youtube.com/@passianiadvogados" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Youtube className="h-4 w-4" /> YouTube · Pod Isso Passiani</a></li>
+              <li><a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Instagram className="h-4 w-4" /> Instagram</a></li>
+              <li><a href={YOUTUBE_CHANNEL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Youtube className="h-4 w-4" /> YouTube · Pod Isso Passiani</a></li>
+              <li><a href={FACEBOOK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Facebook className="h-4 w-4" /> Facebook</a></li>
               <li><a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><MessageCircle className="h-4 w-4" /> WhatsApp</a></li>
             </ul>
           </div>

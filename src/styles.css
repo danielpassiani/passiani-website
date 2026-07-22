@@ -38,39 +38,39 @@
 
 :root {
   --radius: 0.5rem;
-  /* Dark, editorial palette */
-  --background: oklch(0.14 0.01 60);        /* near-black warm ink */
-  --foreground: oklch(0.96 0.01 80);        /* off-white */
-  --card: oklch(0.18 0.012 60);
-  --card-foreground: oklch(0.96 0.01 80);
-  --popover: oklch(0.18 0.012 60);
-  --popover-foreground: oklch(0.96 0.01 80);
-  --primary: oklch(0.78 0.13 82);           /* aged gold */
-  --primary-foreground: oklch(0.14 0.01 60);
-  --secondary: oklch(0.22 0.014 60);
-  --secondary-foreground: oklch(0.96 0.01 80);
-  --muted: oklch(0.22 0.014 60);
-  --muted-foreground: oklch(0.72 0.02 80);
-  --accent: oklch(0.78 0.13 82);
-  --accent-foreground: oklch(0.14 0.01 60);
+  /* Navy + gold palette — Passiani brand identity */
+  --background: oklch(0.19 0.055 265);      /* deep navy */
+  --foreground: oklch(0.97 0.008 85);       /* off-white */
+  --card: oklch(0.23 0.06 265);
+  --card-foreground: oklch(0.97 0.008 85);
+  --popover: oklch(0.23 0.06 265);
+  --popover-foreground: oklch(0.97 0.008 85);
+  --primary: oklch(0.82 0.12 84);           /* aged gold */
+  --primary-foreground: oklch(0.16 0.05 265);
+  --secondary: oklch(0.26 0.055 265);
+  --secondary-foreground: oklch(0.97 0.008 85);
+  --muted: oklch(0.26 0.055 265);
+  --muted-foreground: oklch(0.78 0.03 85);
+  --accent: oklch(0.82 0.12 84);
+  --accent-foreground: oklch(0.16 0.05 265);
   --destructive: oklch(0.6 0.22 25);
   --destructive-foreground: oklch(0.98 0.01 80);
-  --border: oklch(0.28 0.015 70 / 60%);
-  --input: oklch(0.28 0.015 70);
-  --ring: oklch(0.78 0.13 82);
+  --border: oklch(0.4 0.05 265 / 55%);
+  --input: oklch(0.32 0.05 265);
+  --ring: oklch(0.82 0.12 84);
 
-  --gold: oklch(0.78 0.13 82);
-  --gold-soft: oklch(0.86 0.09 85);
-  --ink: oklch(0.09 0.008 60);
+  --gold: oklch(0.82 0.12 84);
+  --gold-soft: oklch(0.9 0.09 87);
+  --ink: oklch(0.13 0.05 265);              /* darker navy for bands */
 
-  --gradient-gold: linear-gradient(135deg, oklch(0.86 0.09 85), oklch(0.72 0.14 78));
-  --gradient-fade: linear-gradient(180deg, oklch(0.14 0.01 60 / 0), oklch(0.14 0.01 60) 90%);
-  --shadow-gold: 0 20px 60px -20px color-mix(in oklab, oklch(0.78 0.13 82) 35%, transparent);
+  --gradient-gold: linear-gradient(135deg, oklch(0.9 0.09 87), oklch(0.74 0.14 80));
+  --gradient-fade: linear-gradient(180deg, oklch(0.19 0.055 265 / 0), oklch(0.19 0.055 265) 90%);
+  --shadow-gold: 0 20px 60px -20px color-mix(in oklab, oklch(0.82 0.12 84) 35%, transparent);
 }
 
 .dark {
-  --background: oklch(0.14 0.01 60);
-  --foreground: oklch(0.96 0.01 80);
+  --background: oklch(0.19 0.055 265);
+  --foreground: oklch(0.97 0.008 85);
 }
 
 @layer base {
