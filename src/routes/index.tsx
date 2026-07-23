@@ -5,13 +5,14 @@ import {
   Star, MapPin, Phone, Mail, Instagram, Youtube, MessageCircle,
   ArrowRight, Clock, ChevronDown, Quote, Facebook, PlayCircle,
   BookOpen, GraduationCap, Award, Sparkles, Newspaper,
+  Mic, Radar, Lock, ExternalLink, Gavel, FileText,
 } from "lucide-react";
 import headerAsset from "@/assets/passiani-header.png.asset.json";
 import footerAsset from "@/assets/passiani-footer.png.asset.json";
 
 import portrait from "@/assets/passiani-portrait.jpg.asset.json";
 import working from "@/assets/passiani-working.jpg.asset.json";
-import escritorioAsset from "@/assets/passiani-escritorio.png.asset.json";
+import escritorioAsset from "@/assets/passiani-fachada-2026.png.asset.json";
 import penseBemCover from "@/assets/pense-bem-cover.png.asset.json";
 import certBacharel from "@/assets/cert-bacharel.jpg.asset.json";
 import certOab from "@/assets/cert-oab.jpg.asset.json";

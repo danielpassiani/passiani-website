@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiPublicYoutubeRouteImport } from './routes/api/public/youtube'
 import { Route as ApiPublicBlogRouteImport } from './routes/api/public/blog'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicYoutubeRoute = ApiPublicYoutubeRouteImport.update({
+  id: '/api/public/youtube',
+  path: '/api/public/youtube',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicBlogRoute = ApiPublicBlogRouteImport.update({
@@ -26,27 +32,31 @@ const ApiPublicBlogRoute = ApiPublicBlogRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/api/public/blog': typeof ApiPublicBlogRoute
+  '/api/public/youtube': typeof ApiPublicYoutubeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/api/public/blog': typeof ApiPublicBlogRoute
+  '/api/public/youtube': typeof ApiPublicYoutubeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/api/public/blog': typeof ApiPublicBlogRoute
+  '/api/public/youtube': typeof ApiPublicYoutubeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/public/blog'
+  fullPaths: '/' | '/api/public/blog' | '/api/public/youtube'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/public/blog'
-  id: '__root__' | '/' | '/api/public/blog'
+  to: '/' | '/api/public/blog' | '/api/public/youtube'
+  id: '__root__' | '/' | '/api/public/blog' | '/api/public/youtube'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApiPublicBlogRoute: typeof ApiPublicBlogRoute
+  ApiPublicYoutubeRoute: typeof ApiPublicYoutubeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/youtube': {
+      id: '/api/public/youtube'
+      path: '/api/public/youtube'
+      fullPath: '/api/public/youtube'
+      preLoaderRoute: typeof ApiPublicYoutubeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/blog': {
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApiPublicBlogRoute: ApiPublicBlogRoute,
+  ApiPublicYoutubeRoute: ApiPublicYoutubeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
