@@ -368,26 +368,110 @@ function Areas() {
   );
 }
 
-function Content() {
+type YtVideo = { id: string; title: string; url: string; published: string; thumb: string };
+
+function Podcast() {
+  const [videos, setVideos] = useState<YtVideo[] | null>(null);
+  const [error, setError] = useState(false);
+  useEffect(() => {
+    let alive = true;
+    fetch("/api/public/youtube?channel=podcast&limit=6")
+      .then((r) => r.json())
+      .then((d: { videos?: YtVideo[] }) => { if (alive) setVideos(d.videos ?? []); })
+      .catch(() => { if (alive) setError(true); });
+    return () => { alive = false; };
+  }, []);
+
   return (
-    <section id="conteudo" className="border-b border-border/50">
+    <section id="podcast" className="border-b border-border/50">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
         <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
-          <div>
-            <span className="eyebrow"><span className="gold-rule" /> Autoridade digital</span>
+          <div className="max-w-2xl">
+            <span className="eyebrow"><span className="gold-rule" /> Podcast oficial</span>
             <h2 className="headline mt-5 text-4xl sm:text-5xl md:text-6xl">
               Pod Isso <span className="gold-gradient">Passiani</span>
             </h2>
-            <p className="mt-5 max-w-xl text-muted-foreground">
-              Todo empresário precisa entender de direito antes de precisar de um advogado. Nosso podcast e nossos canais quebram o juridiquês
-              e mostram, na prática, o que sua empresa precisa fazer hoje.
+            <p className="mt-5 text-muted-foreground">
+              Conversas sem juridiquês sobre o que todo empresário precisa saber para blindar o próprio negócio.
+              Direito empresarial, contratos, trabalhista e histórias reais de quem já passou por processo — em episódios diretos, com convidados e muita prática.
+            </p>
+            <p className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
+              <Mic className="h-4 w-4 text-gold" /> Novos episódios semanalmente no canal oficial.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
-              <Instagram className="h-4 w-4" /> Instagram
+            <a href={YOUTUBE_PODCAST} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+              <Youtube className="h-4 w-4" /> YouTube do Podcast
             </a>
-            <a href={YOUTUBE_CHANNEL} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+            <a href={INSTAGRAM_PODCAST} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+              <Instagram className="h-4 w-4" /> Instagram do Podcast
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {videos === null && !error &&
+            Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="aspect-video animate-pulse border border-border/60 bg-card/40" />
+            ))}
+          {error && (
+            <div className="lg:col-span-3 border border-border/60 bg-card/40 p-8 text-center text-muted-foreground">
+              Não foi possível carregar os episódios agora.{" "}
+              <a href={YOUTUBE_PODCAST} target="_blank" rel="noopener noreferrer" className="text-gold underline">
+                Acessar o canal
+              </a>.
+            </div>
+          )}
+          {videos?.map((v) => (
+            <a
+              key={v.id}
+              href={v.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col overflow-hidden border border-border/60 bg-card/40 transition-all hover:-translate-y-1 hover:border-gold/60"
+            >
+              <div className="relative aspect-video overflow-hidden bg-ink">
+                <img src={v.thumb} alt={v.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div className="absolute inset-0 grid place-items-center bg-black/25">
+                  <PlayCircle className="h-14 w-14 text-gold drop-shadow-lg" strokeWidth={1.5} />
+                </div>
+                <div className="absolute left-3 top-3 inline-flex items-center gap-1.5 border border-gold/60 bg-background/80 px-2 py-1 text-[0.6rem] uppercase tracking-[0.25em] text-gold backdrop-blur">
+                  <Youtube className="h-3 w-3" /> Episódio
+                </div>
+              </div>
+              <div className="flex flex-1 flex-col p-5">
+                <h3 className="font-display text-base uppercase leading-tight text-foreground line-clamp-3 group-hover:text-gold">{v.title}</h3>
+                <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                  Assistir <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Cortes() {
+  return (
+    <section id="cortes" className="border-b border-border/50 bg-ink">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+        <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
+          <div className="max-w-2xl">
+            <span className="eyebrow"><span className="gold-rule" /> Passiani Advogados nas redes</span>
+            <h2 className="headline mt-5 text-4xl sm:text-5xl md:text-6xl">
+              Cortes que <span className="gold-gradient">protegem</span> a sua empresa.
+            </h2>
+            <p className="mt-5 text-muted-foreground">
+              Conteúdos rápidos e diretos do escritório sobre contratos, blindagem, trabalhista e o que já derrubou muita empresa por aí.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <a href={INSTAGRAM_ADVOCACIA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+              <Instagram className="h-4 w-4" /> @passianiadvogados
+            </a>
+            <a href={YOUTUBE_ADVOCACIA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
               <Youtube className="h-4 w-4" /> YouTube
             </a>
             <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
