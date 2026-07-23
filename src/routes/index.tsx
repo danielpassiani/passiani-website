@@ -12,7 +12,7 @@ import footerAsset from "@/assets/passiani-footer.png.asset.json";
 
 import portrait from "@/assets/passiani-portrait.jpg.asset.json";
 import working from "@/assets/passiani-working.jpg.asset.json";
-import escritorioAsset from "@/assets/passiani-fachada-nova.png.asset.json";
+import escritorioAsset from "@/assets/passiani-fachada-externa.png.asset.json";
 import penseBemCover from "@/assets/pense-bem-cover.png.asset.json";
 import certBacharel from "@/assets/cert-bacharel.jpg.asset.json";
 import certOab from "@/assets/cert-oab.jpg.asset.json";
