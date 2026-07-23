@@ -40,13 +40,21 @@ export const Route = createFileRoute("/")({
 });
 
 const WHATSAPP = "https://wa.me/551122190510?text=Olá,%20gostaria%20de%20agendar%20uma%20conversa%20com%20a%20Passiani%20Advogados.";
+const WHATSAPP_CLIENTE = "https://wa.me/551122190510?text=Olá,%20já%20sou%20cliente%20e%20desejo%20meu%20login%20e%20senha%20de%20acesso";
 
-const YOUTUBE_CHANNEL = "https://www.youtube.com/@podissopassiani";
-const INSTAGRAM = "https://instagram.com/passianiadvogados";
+const YOUTUBE_PODCAST = "https://www.youtube.com/@podissopassiani";
+const YOUTUBE_ADVOCACIA = "https://www.youtube.com/@passianiadvogados";
+const INSTAGRAM_PODCAST = "https://www.instagram.com/podissopassiani/";
+const INSTAGRAM_ADVOCACIA = "https://www.instagram.com/passianiadvogados/";
 const FACEBOOK = "https://web.facebook.com/profile.php?id=61589470156729";
 const GOOGLE_MAPS = "https://maps.app.goo.gl/2MQjUMUksJyG5FfV7";
+const GOOGLE_REVIEW = "https://g.page/r/passianiadvogados/review";
 const MASTERCLASS = "https://hotmart.com/pt-br/marketplace/produtos/masterclass-metodo-contratacao-blindada/O101373502C";
 const AMAZON_BOOK = "https://www.amazon.com.br/Pense-Bem-Marcelo-Passiani/dp/8590632105";
+const JUSBRASIL = "https://marcelopassiani.jusbrasil.com.br/";
+const MIGALHAS = "https://www.migalhas.com.br/autor/marcelo-passiani";
+const RADAR_URL = "https://passianiinteligencia.lovable.app/";
+const PROMAD_ACTION = "https://www.integra.adv.br/moderno/include/logarSistema.asp?login=integra";
 
 const certificates = [
   { img: certBacharel.url, title: "Bacharel em Direito", org: "Centro Universitário Estácio Radial de São Paulo", year: "2005" },
