@@ -48,7 +48,7 @@ const INSTAGRAM_PODCAST = "https://www.instagram.com/podissopassiani/";
 const INSTAGRAM_ADVOCACIA = "https://www.instagram.com/passianiadvogados/";
 const FACEBOOK = "https://web.facebook.com/profile.php?id=61589470156729";
 const GOOGLE_MAPS = "https://maps.app.goo.gl/2MQjUMUksJyG5FfV7";
-const GOOGLE_REVIEW = "https://g.page/r/passianiadvogados/review";
+const GOOGLE_REVIEW = "https://share.google/zKjPqlOhdZRjK8NAL";
 const MASTERCLASS = "https://hotmart.com/pt-br/marketplace/produtos/masterclass-metodo-contratacao-blindada/O101373502C";
 const AMAZON_BOOK = "https://www.amazon.com.br/Pense-Bem-Marcelo-Passiani/dp/8590632105";
 const JUSBRASIL = "https://marcelopassiani.jusbrasil.com.br/";
