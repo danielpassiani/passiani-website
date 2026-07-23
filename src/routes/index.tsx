@@ -12,7 +12,7 @@ import footerAsset from "@/assets/passiani-footer.png.asset.json";
 
 import portrait from "@/assets/passiani-portrait.jpg.asset.json";
 import working from "@/assets/passiani-working.jpg.asset.json";
-import escritorioAsset from "@/assets/passiani-fachada-nova.png.asset.json";
+import escritorioAsset from "@/assets/passiani-fachada-externa.png.asset.json";
 import penseBemCover from "@/assets/pense-bem-cover.png.asset.json";
 import certBacharel from "@/assets/cert-bacharel.jpg.asset.json";
 import certOab from "@/assets/cert-oab.jpg.asset.json";
@@ -161,15 +161,15 @@ function Nav() {
   ];
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-8 px-4 py-3 sm:px-6 lg:gap-14 lg:px-8 xl:gap-20">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:gap-12 lg:px-8 lg:py-5 xl:gap-20">
         <a href="#top" className="flex min-w-0 shrink-0 items-center gap-3 py-1" aria-label="Passiani Advogados — Início">
-          <span className="wordmark text-[20px] sm:text-[24px] lg:text-[26px]">
+          <span className="wordmark text-[22px] sm:text-[26px] lg:text-[28px] xl:text-[30px]">
             <span>Passiani</span>
-            <span className="wordmark-sub text-[11px] sm:text-[13px] lg:text-[14px] opacity-90">Advogados</span>
+            <span className="wordmark-sub text-[12px] sm:text-[14px] lg:text-[15px] xl:text-[16px] opacity-90">Advogados</span>
           </span>
         </a>
         <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end">
-          <span aria-hidden className="mr-8 h-8 w-px bg-border/60 xl:mr-12" />
+          <span aria-hidden className="mr-6 h-8 w-px bg-border/60 xl:mr-10" />
           <nav className="flex items-center gap-5 xl:gap-7">
             {links.map((l) => (
               <a key={l.href} href={l.href} className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-gold xl:text-xs xl:tracking-[0.2em]">
@@ -567,7 +567,7 @@ function Escritorio() {
             src={escritorioAsset.url}
             alt="Fachada da sede Passiani Advogados em São Paulo"
             loading="lazy"
-            className="h-[480px] w-full object-cover object-center sm:h-[600px] md:h-[720px] lg:h-[820px]"
+            className="h-[420px] w-full object-cover object-[center_22%] sm:h-[520px] md:h-[640px] lg:h-[760px]"
           />
         </div>
 
