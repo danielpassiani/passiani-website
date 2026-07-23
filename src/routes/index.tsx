@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Shield, FileSignature, Users, AlertTriangle, Landmark, Scale,
   Star, MapPin, Phone, Mail, Instagram, Youtube, MessageCircle,
   ArrowRight, Clock, ChevronDown, Quote, Facebook, PlayCircle,
-  BookOpen, GraduationCap, Award, Sparkles,
+  BookOpen, GraduationCap, Award, Sparkles, Newspaper,
 } from "lucide-react";
 import headerAsset from "@/assets/passiani-header.png.asset.json";
 import footerAsset from "@/assets/passiani-footer.png.asset.json";
@@ -120,6 +120,7 @@ function Home() {
       <Content />
       <Masterclass />
       <Book />
+      <Blog />
       <Escritorio />
       <Testimonials />
       <SocialProof />
@@ -139,6 +140,7 @@ function Nav() {
     { href: "#conteudo", label: "Conteúdo" },
     { href: "#masterclass", label: "Masterclass" },
     { href: "#livro", label: "Livro" },
+    { href: "#blog", label: "Blog" },
     { href: "#escritorio", label: "Escritório" },
     { href: "#contato", label: "Contato" },
   ];
@@ -862,6 +864,128 @@ function Book() {
 }
 
 
+const BLOG_URL = "https://passianiadvogado.blogspot.com/";
+
+type BlogPost = {
+  id: string;
+  title: string;
+  url: string;
+  published: string;
+  snippet: string;
+  image: string | null;
+};
+
+function formatDate(iso: string) {
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+  return d.toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
+}
+
+function Blog() {
+  const [posts, setPosts] = useState<BlogPost[] | null>(null);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    let alive = true;
+    fetch("/api/public/blog")
+      .then((r) => r.json())
+      .then((data: { posts?: BlogPost[] }) => {
+        if (!alive) return;
+        setPosts(data.posts ?? []);
+      })
+      .catch(() => {
+        if (!alive) return;
+        setError(true);
+      });
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  return (
+    <section id="blog" className="border-y border-border/50 bg-ink py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <span className="eyebrow"><span className="gold-rule" /> Blog oficial</span>
+            <h2 className="headline mt-5 text-4xl sm:text-5xl md:text-6xl">
+              Últimas do <span className="gold-gradient">Blog</span>
+            </h2>
+            <p className="mt-4 max-w-2xl text-muted-foreground">
+              Artigos, análises e reflexões publicadas diretamente por Marcelo Passiani.
+              Sempre atualizado com as três postagens mais recentes.
+            </p>
+          </div>
+          <a href={BLOG_URL} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+            Ver todos os posts <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {posts === null && !error &&
+            Array.from({ length: 3 }).map((_, i) => (
+              <div key={i} className="h-[420px] animate-pulse border border-border/60 bg-card/40" />
+            ))}
+
+          {error && (
+            <div className="md:col-span-3 border border-border/60 bg-card/40 p-8 text-center text-muted-foreground">
+              Não foi possível carregar as postagens no momento.{" "}
+              <a href={BLOG_URL} target="_blank" rel="noopener noreferrer" className="text-gold underline">
+                Acesse o blog diretamente
+              </a>.
+            </div>
+          )}
+
+          {posts?.map((p) => (
+            <a
+              key={p.id}
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col overflow-hidden border border-border/60 bg-card/40 transition-all hover:-translate-y-1 hover:border-gold/60"
+            >
+              <div className="relative aspect-[16/10] overflow-hidden bg-background">
+                {p.image ? (
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
+                  />
+                ) : (
+                  <div className="grid h-full w-full place-items-center">
+                    <Newspaper className="h-12 w-12 text-gold/50" />
+                  </div>
+                )}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
+              </div>
+              <div className="flex flex-1 flex-col p-6">
+                <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-gold">
+                  <Newspaper className="h-3 w-3" />
+                  <span>{formatDate(p.published)}</span>
+                </div>
+                <h3 className="mt-3 font-serif text-xl leading-tight text-foreground group-hover:text-gold">
+                  {p.title}
+                </h3>
+                <p className="mt-3 line-clamp-3 text-sm text-muted-foreground">{p.snippet}</p>
+                <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                  Ler artigo <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
+                </span>
+              </div>
+            </a>
+          ))}
+
+          {posts && posts.length === 0 && !error && (
+            <div className="md:col-span-3 border border-border/60 bg-card/40 p-8 text-center text-muted-foreground">
+              Nenhuma postagem publicada ainda.
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function WhatsAppFloat() {
   return (
