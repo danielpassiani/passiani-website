@@ -777,7 +777,10 @@ function Footer() {
             <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
               <li><a href="#sobre" className="hover:text-gold">Sobre</a></li>
               <li><a href="#atuacao" className="hover:text-gold">Áreas de atuação</a></li>
-              <li><a href="#conteudo" className="hover:text-gold">Conteúdo</a></li>
+              <li><a href="#podcast" className="hover:text-gold">Podcast</a></li>
+              <li><a href="#cortes" className="hover:text-gold">Cortes</a></li>
+              <li><a href="#radar" className="hover:text-gold">Radar Passiani</a></li>
+              <li><a href="#cliente" className="hover:text-gold">Área do cliente</a></li>
               <li><a href="#contato" className="hover:text-gold">Contato</a></li>
               <li><a href="#" className="hover:text-gold">Política de privacidade</a></li>
             </ul>
@@ -785,8 +788,10 @@ function Footer() {
           <div>
             <p className="font-display text-sm uppercase tracking-[0.3em] text-gold">Siga</p>
             <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-              <li><a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Instagram className="h-4 w-4" /> Instagram</a></li>
-              <li><a href={YOUTUBE_CHANNEL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Youtube className="h-4 w-4" /> YouTube · Pod Isso Passiani</a></li>
+              <li><a href={INSTAGRAM_ADVOCACIA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Instagram className="h-4 w-4" /> Instagram · Advocacia</a></li>
+              <li><a href={INSTAGRAM_PODCAST} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Instagram className="h-4 w-4" /> Instagram · Podcast</a></li>
+              <li><a href={YOUTUBE_ADVOCACIA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Youtube className="h-4 w-4" /> YouTube · Advocacia</a></li>
+              <li><a href={YOUTUBE_PODCAST} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Youtube className="h-4 w-4" /> YouTube · Pod Isso Passiani</a></li>
               <li><a href={FACEBOOK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Facebook className="h-4 w-4" /> Facebook</a></li>
               <li><a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><MessageCircle className="h-4 w-4" /> WhatsApp</a></li>
             </ul>
