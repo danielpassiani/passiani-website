@@ -567,7 +567,7 @@ function Escritorio() {
             src={escritorioAsset.url}
             alt="Fachada da sede Passiani Advogados em São Paulo"
             loading="lazy"
-            className="h-[420px] w-full object-cover object-center sm:h-[520px] md:h-[640px] lg:h-[760px]"
+            className="h-[420px] w-full object-cover object-[center_22%] sm:h-[520px] md:h-[640px] lg:h-[760px]"
           />
         </div>
 
