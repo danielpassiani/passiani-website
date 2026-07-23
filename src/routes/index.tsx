@@ -460,14 +460,15 @@ function Escritorio() {
             Estrutura própria em São Paulo. Ambiente reservado, técnico e pensado para atender o empresário com a discrição que a matéria exige.
           </p>
         </div>
-        <div className="mt-12 overflow-hidden border border-border/60">
+        <div className="mt-12 overflow-hidden border border-border/60 bg-ink">
           <img
             src={escritorioAsset.url}
             alt="Fachada da sede Passiani Advogados em São Paulo"
             loading="lazy"
-            className="aspect-[4/5] w-full object-cover sm:aspect-[16/10] md:aspect-[21/9]"
+            className="h-[420px] w-full object-cover object-center sm:h-[520px] md:h-[620px] lg:h-[680px]"
           />
         </div>
+
         <div className="mt-6">
           <a href={GOOGLE_MAPS} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
             <MapPin className="h-4 w-4" /> Ver no Google Maps
