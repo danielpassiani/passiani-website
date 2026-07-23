@@ -120,6 +120,7 @@ function Home() {
       <Content />
       <Masterclass />
       <Book />
+      <Blog />
       <Escritorio />
       <Testimonials />
       <SocialProof />
