@@ -126,10 +126,14 @@ function Home() {
       <About />
       <Credentials />
       <Areas />
-      <Content />
+      <Podcast />
+      <Cortes />
+      <Radar />
       <Masterclass />
       <Book />
       <Blog />
+      <Publicacoes />
+      <Cliente />
       <Escritorio />
       <Testimonials />
       <SocialProof />
@@ -146,11 +150,13 @@ function Nav() {
   const links = [
     { href: "#sobre", label: "Sobre" },
     { href: "#atuacao", label: "Áreas" },
-    { href: "#conteudo", label: "Conteúdo" },
+    { href: "#podcast", label: "Podcast" },
+    { href: "#cortes", label: "Cortes" },
+    { href: "#radar", label: "Radar" },
     { href: "#masterclass", label: "Masterclass" },
     { href: "#livro", label: "Livro" },
     { href: "#blog", label: "Blog" },
-    { href: "#escritorio", label: "Escritório" },
+    { href: "#cliente", label: "Cliente" },
     { href: "#contato", label: "Contato" },
   ];
   return (
