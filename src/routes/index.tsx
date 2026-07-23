@@ -33,7 +33,7 @@ export const Route = createFileRoute("/")({
       { title: "Passiani Advogados — A defesa começa no contrato" },
       { name: "description", content: "Advocacia empresarial há 25 anos. Blindagem jurídica, contratos, trabalhista e tributário para pequenas e médias empresas." },
       { property: "og:title", content: "Passiani Advogados — A defesa começa no contrato" },
-      { property: "og:description", content: "Menos processo, mais lucro. Advocacia empresarial full service para proteção do empreendedor." },
+      { property: "og:description", content: "Advocacia empresarial há 25 anos. Blindagem jurídica, contratos, trabalhista e tributário para pequenas e médias empresas." },
     ],
   }),
   component: Home,
