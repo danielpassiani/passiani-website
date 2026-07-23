@@ -5,7 +5,7 @@ import {
   Star, MapPin, Phone, Mail, Instagram, Youtube, MessageCircle,
   ArrowRight, Clock, ChevronDown, Quote, Facebook, PlayCircle,
   BookOpen, GraduationCap, Award, Sparkles, Newspaper,
-  Mic, Radar, Lock, ExternalLink, Gavel, FileText,
+  Mic, Radar as RadarIcon, Lock, ExternalLink, Gavel, FileText,
 } from "lucide-react";
 import headerAsset from "@/assets/passiani-header.png.asset.json";
 import footerAsset from "@/assets/passiani-footer.png.asset.json";
