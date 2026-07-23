@@ -140,6 +140,7 @@ function Nav() {
     { href: "#conteudo", label: "Conteúdo" },
     { href: "#masterclass", label: "Masterclass" },
     { href: "#livro", label: "Livro" },
+    { href: "#blog", label: "Blog" },
     { href: "#escritorio", label: "Escritório" },
     { href: "#contato", label: "Contato" },
   ];
