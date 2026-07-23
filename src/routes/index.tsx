@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Shield, FileSignature, Users, AlertTriangle, Landmark, Scale,
   Star, MapPin, Phone, Mail, Instagram, Youtube, MessageCircle,
   ArrowRight, Clock, ChevronDown, Quote, Facebook, PlayCircle,
-  BookOpen, GraduationCap, Award, Sparkles,
+  BookOpen, GraduationCap, Award, Sparkles, Newspaper,
 } from "lucide-react";
 import headerAsset from "@/assets/passiani-header.png.asset.json";
 import footerAsset from "@/assets/passiani-footer.png.asset.json";
