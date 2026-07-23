@@ -1107,3 +1107,236 @@ function WhatsAppFloat() {
     </a>
   );
 }
+
+function Radar() {
+  return (
+    <section id="radar" className="relative overflow-hidden border-b border-border/50 bg-ink">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,oklch(0.82_0.12_84/0.15),transparent_55%)]" />
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 md:grid-cols-[1.05fr_1fr] md:items-center md:py-28 lg:px-8">
+        <div>
+          <span className="eyebrow"><span className="gold-rule" /> Produto oficial</span>
+          <div className="mt-5 flex items-center gap-3">
+            <Radar className="h-7 w-7 text-gold" strokeWidth={1.5} />
+            <p className="font-display text-xs uppercase tracking-[0.4em] text-gold">Radar Passiani</p>
+          </div>
+          <h2 className="headline mt-4 text-4xl sm:text-5xl md:text-[3.4rem] leading-[1.05]">
+            Monitore seu <span className="gold-gradient">CNPJ 24h</span> por dia e saiba com antecedência se está sendo processado.
+          </h2>
+          <p className="mt-6 max-w-xl text-lg text-muted-foreground">
+            Enquanto você trabalha, o Radar Passiani vigia. Ferramenta de inteligência jurídica que rastreia
+            movimentações processuais contra o seu CNPJ e te avisa antes que o problema vire prejuízo.
+          </p>
+          <ul className="mt-8 space-y-3 text-sm text-foreground">
+            {[
+              "Alerta em tempo real de novos processos",
+              "Monitoramento contínuo e automatizado",
+              "Antecipe a defesa — reaja antes da citação",
+            ].map((li) => (
+              <li key={li} className="flex items-start gap-3">
+                <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rotate-45 bg-gold" />
+                {li}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-10 flex flex-wrap gap-3">
+            <a href={RADAR_URL} target="_blank" rel="noopener noreferrer" className="btn-gold">
+              Conhecer o Radar Passiani <ArrowRight className="h-4 w-4" />
+            </a>
+            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+              Falar com o time
+            </a>
+          </div>
+        </div>
+        <div className="relative">
+          <div className="relative overflow-hidden border border-gold/40 bg-background shadow-[0_30px_80px_-30px_oklch(0_0_0/0.7)]">
+            <div className="aspect-video w-full">
+              <iframe
+                src={RADAR_URL}
+                title="Radar Passiani — apresentação"
+                loading="lazy"
+                className="h-full w-full"
+                sandbox="allow-scripts allow-same-origin allow-popups"
+              />
+            </div>
+            <div className="flex items-center justify-between gap-4 border-t border-border/60 bg-ink px-5 py-4">
+              <p className="font-display text-xs uppercase tracking-[0.3em] text-gold">passianiinteligencia.lovable.app</p>
+              <a href={RADAR_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-gold">
+                Abrir <ExternalLink className="h-3 w-3" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Publicacoes() {
+  const items = [
+    {
+      name: "Jusbrasil",
+      title: "Perfil e publicações no Jusbrasil",
+      desc: "Artigos técnicos, decisões comentadas e produção jurídica pública de Dr. Marcelo Passiani na maior plataforma jurídica do país.",
+      url: JUSBRASIL,
+      icon: Gavel,
+    },
+    {
+      name: "Migalhas",
+      title: "Autor no Migalhas",
+      desc: "Análises e colunas publicadas em um dos veículos jurídicos mais respeitados do Brasil.",
+      url: MIGALHAS,
+      icon: FileText,
+    },
+  ];
+  return (
+    <section id="publicacoes" className="border-b border-border/50">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+        <div className="max-w-2xl">
+          <span className="eyebrow"><span className="gold-rule" /> Publicações e autoridade</span>
+          <h2 className="headline mt-5 text-4xl sm:text-5xl md:text-6xl">
+            Onde a nossa <span className="gold-gradient">voz</span> é publicada.
+          </h2>
+          <p className="mt-5 text-muted-foreground">
+            Produção jurídica de Dr. Marcelo Passiani em plataformas de referência do Direito brasileiro.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          {items.map(({ name, title, desc, url, icon: Icon }) => (
+            <a
+              key={name}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col justify-between border border-border/60 bg-card/40 p-8 transition-all hover:-translate-y-1 hover:border-gold/60"
+            >
+              <div>
+                <div className="flex items-center gap-3">
+                  <Icon className="h-6 w-6 text-gold" strokeWidth={1.5} />
+                  <p className="font-display text-xs uppercase tracking-[0.35em] text-gold">{name}</p>
+                </div>
+                <h3 className="mt-6 font-display text-2xl uppercase leading-tight text-foreground">{title}</h3>
+                <p className="mt-4 text-sm text-muted-foreground">{desc}</p>
+              </div>
+              <span className="mt-8 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-gold">
+                Acessar perfil <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Cliente() {
+  return (
+    <section id="cliente" className="border-b border-border/50 bg-ink">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+        <div className="max-w-2xl">
+          <span className="eyebrow"><span className="gold-rule" /> Área do cliente</span>
+          <h2 className="headline mt-5 text-4xl sm:text-5xl md:text-6xl">
+            Já é <span className="gold-gradient">cliente</span> Passiani?
+          </h2>
+          <p className="mt-5 text-muted-foreground">
+            Dois atalhos exclusivos para quem já caminha com o escritório: consulte seus processos em tempo real e ajude outros empresários
+            compartilhando a sua experiência.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+          {/* Consulta de Processos */}
+          <div className="flex flex-col border border-border/60 bg-background p-8">
+            <div className="flex items-center gap-3">
+              <Lock className="h-6 w-6 text-gold" strokeWidth={1.5} />
+              <p className="font-display text-xs uppercase tracking-[0.35em] text-gold">Portal seguro</p>
+            </div>
+            <h3 className="mt-4 font-display text-2xl uppercase leading-tight text-foreground">Consulte seu processo</h3>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Acompanhamento em tempo real dos seus processos ativos. Acesse com seu usuário e senha entregues pelo escritório.
+            </p>
+
+            <form
+              action={PROMAD_ACTION}
+              method="post"
+              target="_blank"
+              className="mt-6 space-y-4"
+              onSubmit={(e) => {
+                const f = e.currentTarget as HTMLFormElement;
+                const u = f.elements.namedItem("txtUsuario") as HTMLInputElement;
+                const s = f.elements.namedItem("txtSenha") as HTMLInputElement;
+                if (!u.value.trim()) { e.preventDefault(); alert("O campo usuário é obrigatório"); return; }
+                if (!s.value.trim()) { e.preventDefault(); alert("O campo senha é obrigatório"); return; }
+              }}
+            >
+              <div>
+                <label className="text-[0.65rem] uppercase tracking-[0.3em] text-muted-foreground">Usuário</label>
+                <input
+                  name="txtUsuario"
+                  type="text"
+                  autoComplete="username"
+                  className="mt-2 w-full border border-border bg-transparent px-3 py-3 text-sm text-foreground outline-none transition-colors focus:border-gold"
+                />
+              </div>
+              <div>
+                <label className="text-[0.65rem] uppercase tracking-[0.3em] text-muted-foreground">Senha</label>
+                <input
+                  name="txtSenha"
+                  type="password"
+                  autoComplete="current-password"
+                  className="mt-2 w-full border border-border bg-transparent px-3 py-3 text-sm text-foreground outline-none transition-colors focus:border-gold"
+                />
+              </div>
+              <button type="submit" className="btn-gold w-full">
+                Entrar no portal <ArrowRight className="h-4 w-4" />
+              </button>
+            </form>
+
+            <div className="mt-6 border-t border-border/60 pt-5">
+              <p className="text-sm text-muted-foreground">
+                Está com dificuldade de acesso? Fale com o nosso suporte.
+              </p>
+              <a
+                href={WHATSAPP_CLIENTE}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost-gold mt-3"
+              >
+                <MessageCircle className="h-4 w-4" /> Suporte via WhatsApp
+              </a>
+            </div>
+          </div>
+
+          {/* Avaliação Google */}
+          <div className="relative flex flex-col justify-between overflow-hidden border border-gold/40 bg-background p-8">
+            <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[radial-gradient(circle,oklch(0.82_0.12_84/0.25),transparent_70%)]" />
+            <div className="relative">
+              <div className="flex items-center gap-3">
+                <Star className="h-6 w-6 fill-current text-gold" />
+                <p className="font-display text-xs uppercase tracking-[0.35em] text-gold">Sua experiência importa</p>
+              </div>
+              <h3 className="mt-4 font-display text-2xl uppercase leading-tight text-foreground">
+                Conte pra outros empresários como foi ser cliente Passiani
+              </h3>
+              <p className="mt-4 text-muted-foreground">
+                Sua avaliação no Google ajuda outros empresários a encontrarem uma advocacia séria — e fortalece o trabalho do nosso time.
+                Leva menos de 1 minuto.
+              </p>
+              <div className="mt-6 flex text-gold">
+                {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 fill-current" />)}
+              </div>
+            </div>
+            <div className="relative mt-8 flex flex-wrap gap-3">
+              <a href={GOOGLE_REVIEW} target="_blank" rel="noopener noreferrer" className="btn-gold">
+                <Star className="h-4 w-4 fill-current" /> Avaliar no Google
+              </a>
+              <a href={GOOGLE_MAPS} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+                Ver perfil no Maps
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
