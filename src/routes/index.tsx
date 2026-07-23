@@ -99,7 +99,7 @@ const episodes: Episode[] = [
   { n: "02", title: "5 documentos para proteger o seu patrimônio", tag: "Blindagem", platform: "instagram", url: "https://www.instagram.com/p/DajDYtHPlpn/", thumb: thumb5Docs.url },
   { n: "03", title: "Ele não quis CLT… mas te processou depois", tag: "Trabalhista", platform: "instagram", url: "https://www.instagram.com/p/DayYg9IMtw2/", thumb: thumbClt.url },
   { n: "04", title: "Contrato mal feito hoje, processo certo amanhã", tag: "Contratos", platform: "instagram", url: "https://www.instagram.com/p/Da1GI51vaCC/", thumb: thumbContrato.url },
-  { n: "05", title: "Segurança no trabalho: o que você ignora hoje pode custar caro amanhã", tag: "Prevenção", platform: "instagram", url: "https://www.instagram.com/p/DbGrX0Ys2Lc/", thumb: thumbSeguranca.url },
+  { n: "05", title: "Sem regras claras, sua empresa fica vulnerável", tag: "Prevenção", platform: "youtube", url: "https://www.youtube.com/shorts/EjrSrDVgPeQ", youtubeId: "EjrSrDVgPeQ" },
   { n: "06", title: "Sócio de trabalho: parceria ou dor de cabeça?", tag: "Societário", platform: "instagram", url: "https://www.instagram.com/p/DaNxvWoOXDu/", thumb: thumbSocio.url },
 ];
 
