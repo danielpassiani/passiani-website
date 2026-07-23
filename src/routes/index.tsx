@@ -1116,7 +1116,7 @@ function Radar() {
         <div>
           <span className="eyebrow"><span className="gold-rule" /> Produto oficial</span>
           <div className="mt-5 flex items-center gap-3">
-            <Radar className="h-7 w-7 text-gold" strokeWidth={1.5} />
+            <RadarIcon className="h-7 w-7 text-gold" strokeWidth={1.5} />
             <p className="font-display text-xs uppercase tracking-[0.4em] text-gold">Radar Passiani</p>
           </div>
           <h2 className="headline mt-4 text-4xl sm:text-5xl md:text-[3.4rem] leading-[1.05]">
