@@ -146,22 +146,22 @@ function Nav() {
   ];
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
-      <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6 lg:px-8">
-        <a href="#top" className="flex min-w-0 items-center gap-3" aria-label="Passiani Advogados — Início">
+      <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,auto)_auto] items-center gap-6 px-4 py-3 sm:px-6 lg:gap-10 lg:px-8">
+        <a href="#top" className="flex min-w-0 items-center gap-3 pr-4 lg:pr-8 lg:border-r lg:border-border/60" aria-label="Passiani Advogados — Início">
           <span className="wordmark text-[15px] sm:text-[17px]">
             <span>Passiani</span>
             <span className="wordmark-sub text-[10px] sm:text-[11px] opacity-90">Advogados</span>
           </span>
         </a>
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-5 lg:flex xl:gap-7">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-gold">
+            <a key={l.href} href={l.href} className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-gold xl:text-xs xl:tracking-[0.2em]">
               {l.label}
             </a>
           ))}
-          <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-gold">Fale conosco</a>
+          <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-gold ml-2">Fale conosco</a>
         </nav>
-        <button onClick={() => setOpen(!open)} className="md:hidden text-gold" aria-label="Menu">
+        <button onClick={() => setOpen(!open)} className="lg:hidden text-gold justify-self-end" aria-label="Menu">
           <div className="space-y-1.5">
             <span className="block h-0.5 w-6 bg-current" />
             <span className="block h-0.5 w-6 bg-current" />
@@ -169,8 +169,10 @@ function Nav() {
           </div>
         </button>
       </div>
+
       {open && (
-        <div className="border-t border-border/60 bg-background md:hidden">
+        <div className="border-t border-border/60 bg-background lg:hidden">
+
           <div className="flex flex-col gap-1 px-4 py-4">
             {links.map((l) => (
               <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="py-2 text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground hover:text-gold">
@@ -458,14 +460,15 @@ function Escritorio() {
             Estrutura própria em São Paulo. Ambiente reservado, técnico e pensado para atender o empresário com a discrição que a matéria exige.
           </p>
         </div>
-        <div className="mt-12 overflow-hidden border border-border/60">
+        <div className="mt-12 overflow-hidden border border-border/60 bg-ink">
           <img
             src={escritorioAsset.url}
             alt="Fachada da sede Passiani Advogados em São Paulo"
             loading="lazy"
-            className="aspect-[4/5] w-full object-cover sm:aspect-[16/10] md:aspect-[21/9]"
+            className="h-[420px] w-full object-cover object-center sm:h-[520px] md:h-[620px] lg:h-[680px]"
           />
         </div>
+
         <div className="mt-6">
           <a href={GOOGLE_MAPS} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
             <MapPin className="h-4 w-4" /> Ver no Google Maps
