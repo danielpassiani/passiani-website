@@ -48,7 +48,7 @@ const INSTAGRAM_PODCAST = "https://www.instagram.com/podissopassiani/";
 const INSTAGRAM_ADVOCACIA = "https://www.instagram.com/passianiadvogados/";
 const FACEBOOK = "https://web.facebook.com/profile.php?id=61589470156729";
 const GOOGLE_MAPS = "https://maps.app.goo.gl/2MQjUMUksJyG5FfV7";
-const GOOGLE_REVIEW = "https://share.google/zKjPqlOhdZRjK8NAL";
+const GOOGLE_REVIEW = "https://www.google.com/search?q=passiania+advogados&sca_esv=fc2a7f6adb56bd6b&sxsrf=APpeQnuvzr9x-cQJ0C0georBCzorfCXSFg%3A1784821672982&source=hp&ei=qDdiaofVOeDC5OUPivGwmAw&iflsig=ABILxe8AAAAAamJFuGq7JNqLR4LRMuIxYoNRepel3Fh6&ved=0ahUKEwiHybbukumVAxVgIbkGHYo4DMMQ4dUDCCg&uact=5&oq=passiania+advogados&gs_lp=Egdnd3Mtd2l6IhNwYXNzaWFuaWEgYWR2b2dhZG9zMgUQIRigATIFECEYoAEyBRAhGKABSIwcUK0FWLwbcAR4AJABAZgBmgGgAa8TqgEEMC4yMbgBA8gBAPgBAZgCGKACzhKoAgrCAgcQIxjqAhgnwgINECMY8AUYngYY6gIYJ8ICDRAjGJ4GGPAFGOoCGCfCAgQQIxgnwgITEC4YgAQYigUYQxjHARivARiOBcICDhAuGIAEGLEDGMcBGNEDwgILEC4YgAQYsQMYgwHCAg4QABiABBiKBRixAxiDAcICCxAAGIAEGLEDGIMBwgIOEC4YgAQYigUYsQMYgwHCAggQABiABBixA8ICERAuGIAEGLEDGMcBGK8BGI4FwgIKEAAYgAQYigUYQ8ICCxAAGIAEGLEDGMkDwgIIEC4YgAQYsQPCAgUQABiABMICExAuGEMYrwEYxwEYgAQYigUYjgXCAgwQABiABBgKGAsYsQPCAgwQLhiABBgKGAsYsQPCAgkQABiABBgKGAvCAgcQABiABBgKwgIJEC4YgAQYChgLwgIEEAAYHsICBhAAGB4YCsICBhAAGAUYHsICBRAAGO8FwgIIEAAYgAQYogSYAwbxBdudbb_9T4zckgcENC4yMKAH_YgBsgcEMC4yMLgHxBLCBwcxMy4xMC4xyAcfgAgB&sclient=gws-wiz";
 const MASTERCLASS = "https://hotmart.com/pt-br/marketplace/produtos/masterclass-metodo-contratacao-blindada/O101373502C";
 const AMAZON_BOOK = "https://www.amazon.com.br/Pense-Bem-Marcelo-Passiani/dp/8590632105";
 const JUSBRASIL = "https://marcelopassiani.jusbrasil.com.br/";
