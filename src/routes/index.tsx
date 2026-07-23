@@ -187,14 +187,6 @@ function Nav() {
           </div>
         </button>
       </div>
-        <button onClick={() => setOpen(!open)} className="lg:hidden text-gold justify-self-end" aria-label="Menu">
-          <div className="space-y-1.5">
-            <span className="block h-0.5 w-6 bg-current" />
-            <span className="block h-0.5 w-6 bg-current" />
-            <span className="block h-0.5 w-4 bg-current ml-auto" />
-          </div>
-        </button>
-      </div>
 
       {open && (
         <div className="border-t border-border/60 bg-background lg:hidden">
