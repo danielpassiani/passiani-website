@@ -5,13 +5,14 @@ import {
   Star, MapPin, Phone, Mail, Instagram, Youtube, MessageCircle,
   ArrowRight, Clock, ChevronDown, Quote, Facebook, PlayCircle,
   BookOpen, GraduationCap, Award, Sparkles, Newspaper,
+  Mic, Radar as RadarIcon, Lock, ExternalLink, Gavel, FileText,
 } from "lucide-react";
 import headerAsset from "@/assets/passiani-header.png.asset.json";
 import footerAsset from "@/assets/passiani-footer.png.asset.json";
 
 import portrait from "@/assets/passiani-portrait.jpg.asset.json";
 import working from "@/assets/passiani-working.jpg.asset.json";
-import escritorioAsset from "@/assets/passiani-escritorio.png.asset.json";
+import escritorioAsset from "@/assets/passiani-fachada-2026.png.asset.json";
 import penseBemCover from "@/assets/pense-bem-cover.png.asset.json";
 import certBacharel from "@/assets/cert-bacharel.jpg.asset.json";
 import certOab from "@/assets/cert-oab.jpg.asset.json";
@@ -39,13 +40,21 @@ export const Route = createFileRoute("/")({
 });
 
 const WHATSAPP = "https://wa.me/551122190510?text=Olá,%20gostaria%20de%20agendar%20uma%20conversa%20com%20a%20Passiani%20Advogados.";
+const WHATSAPP_CLIENTE = "https://wa.me/551122190510?text=Olá,%20já%20sou%20cliente%20e%20desejo%20meu%20login%20e%20senha%20de%20acesso";
 
-const YOUTUBE_CHANNEL = "https://www.youtube.com/@podissopassiani";
-const INSTAGRAM = "https://instagram.com/passianiadvogados";
+const YOUTUBE_PODCAST = "https://www.youtube.com/@podissopassiani";
+const YOUTUBE_ADVOCACIA = "https://www.youtube.com/@passianiadvogados";
+const INSTAGRAM_PODCAST = "https://www.instagram.com/podissopassiani/";
+const INSTAGRAM_ADVOCACIA = "https://www.instagram.com/passianiadvogados/";
 const FACEBOOK = "https://web.facebook.com/profile.php?id=61589470156729";
 const GOOGLE_MAPS = "https://maps.app.goo.gl/2MQjUMUksJyG5FfV7";
+const GOOGLE_REVIEW = "https://g.page/r/passianiadvogados/review";
 const MASTERCLASS = "https://hotmart.com/pt-br/marketplace/produtos/masterclass-metodo-contratacao-blindada/O101373502C";
 const AMAZON_BOOK = "https://www.amazon.com.br/Pense-Bem-Marcelo-Passiani/dp/8590632105";
+const JUSBRASIL = "https://marcelopassiani.jusbrasil.com.br/";
+const MIGALHAS = "https://www.migalhas.com.br/autor/marcelo-passiani";
+const RADAR_URL = "https://passianiinteligencia.lovable.app/";
+const PROMAD_ACTION = "https://www.integra.adv.br/moderno/include/logarSistema.asp?login=integra";
 
 const certificates = [
   { img: certBacharel.url, title: "Bacharel em Direito", org: "Centro Universitário Estácio Radial de São Paulo", year: "2005" },
@@ -90,7 +99,7 @@ const episodes: Episode[] = [
   { n: "02", title: "5 documentos para proteger o seu patrimônio", tag: "Blindagem", platform: "instagram", url: "https://www.instagram.com/p/DajDYtHPlpn/", thumb: thumb5Docs.url },
   { n: "03", title: "Ele não quis CLT… mas te processou depois", tag: "Trabalhista", platform: "instagram", url: "https://www.instagram.com/p/DayYg9IMtw2/", thumb: thumbClt.url },
   { n: "04", title: "Contrato mal feito hoje, processo certo amanhã", tag: "Contratos", platform: "instagram", url: "https://www.instagram.com/p/Da1GI51vaCC/", thumb: thumbContrato.url },
-  { n: "05", title: "Segurança no trabalho: o que você ignora hoje pode custar caro amanhã", tag: "Prevenção", platform: "instagram", url: "https://www.instagram.com/p/DbGrX0Ys2Lc/", thumb: thumbSeguranca.url },
+  { n: "05", title: "Sem regras claras, sua empresa fica vulnerável", tag: "Prevenção", platform: "youtube", url: "https://www.youtube.com/shorts/EjrSrDVgPeQ", youtubeId: "EjrSrDVgPeQ" },
   { n: "06", title: "Sócio de trabalho: parceria ou dor de cabeça?", tag: "Societário", platform: "instagram", url: "https://www.instagram.com/p/DaNxvWoOXDu/", thumb: thumbSocio.url },
 ];
 
@@ -117,10 +126,14 @@ function Home() {
       <About />
       <Credentials />
       <Areas />
-      <Content />
+      <Podcast />
+      <Cortes />
+      <Radar />
       <Masterclass />
       <Book />
       <Blog />
+      <Publicacoes />
+      <Cliente />
       <Escritorio />
       <Testimonials />
       <SocialProof />
@@ -137,11 +150,13 @@ function Nav() {
   const links = [
     { href: "#sobre", label: "Sobre" },
     { href: "#atuacao", label: "Áreas" },
-    { href: "#conteudo", label: "Conteúdo" },
+    { href: "#podcast", label: "Podcast" },
+    { href: "#cortes", label: "Cortes" },
+    { href: "#radar", label: "Radar" },
     { href: "#masterclass", label: "Masterclass" },
     { href: "#livro", label: "Livro" },
     { href: "#blog", label: "Blog" },
-    { href: "#escritorio", label: "Escritório" },
+    { href: "#cliente", label: "Cliente" },
     { href: "#contato", label: "Contato" },
   ];
   return (
@@ -353,26 +368,110 @@ function Areas() {
   );
 }
 
-function Content() {
+type YtVideo = { id: string; title: string; url: string; published: string; thumb: string };
+
+function Podcast() {
+  const [videos, setVideos] = useState<YtVideo[] | null>(null);
+  const [error, setError] = useState(false);
+  useEffect(() => {
+    let alive = true;
+    fetch("/api/public/youtube?channel=podcast&limit=6")
+      .then((r) => r.json())
+      .then((d: { videos?: YtVideo[] }) => { if (alive) setVideos(d.videos ?? []); })
+      .catch(() => { if (alive) setError(true); });
+    return () => { alive = false; };
+  }, []);
+
   return (
-    <section id="conteudo" className="border-b border-border/50">
+    <section id="podcast" className="border-b border-border/50">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
         <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
-          <div>
-            <span className="eyebrow"><span className="gold-rule" /> Autoridade digital</span>
+          <div className="max-w-2xl">
+            <span className="eyebrow"><span className="gold-rule" /> Podcast oficial</span>
             <h2 className="headline mt-5 text-4xl sm:text-5xl md:text-6xl">
               Pod Isso <span className="gold-gradient">Passiani</span>
             </h2>
-            <p className="mt-5 max-w-xl text-muted-foreground">
-              Todo empresário precisa entender de direito antes de precisar de um advogado. Nosso podcast e nossos canais quebram o juridiquês
-              e mostram, na prática, o que sua empresa precisa fazer hoje.
+            <p className="mt-5 text-muted-foreground">
+              Conversas sem juridiquês sobre o que todo empresário precisa saber para blindar o próprio negócio.
+              Direito empresarial, contratos, trabalhista e histórias reais de quem já passou por processo — em episódios diretos, com convidados e muita prática.
+            </p>
+            <p className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
+              <Mic className="h-4 w-4 text-gold" /> Novos episódios semanalmente no canal oficial.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
-              <Instagram className="h-4 w-4" /> Instagram
+            <a href={YOUTUBE_PODCAST} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+              <Youtube className="h-4 w-4" /> YouTube do Podcast
             </a>
-            <a href={YOUTUBE_CHANNEL} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+            <a href={INSTAGRAM_PODCAST} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+              <Instagram className="h-4 w-4" /> Instagram do Podcast
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {videos === null && !error &&
+            Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="aspect-video animate-pulse border border-border/60 bg-card/40" />
+            ))}
+          {error && (
+            <div className="lg:col-span-3 border border-border/60 bg-card/40 p-8 text-center text-muted-foreground">
+              Não foi possível carregar os episódios agora.{" "}
+              <a href={YOUTUBE_PODCAST} target="_blank" rel="noopener noreferrer" className="text-gold underline">
+                Acessar o canal
+              </a>.
+            </div>
+          )}
+          {videos?.map((v) => (
+            <a
+              key={v.id}
+              href={v.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col overflow-hidden border border-border/60 bg-card/40 transition-all hover:-translate-y-1 hover:border-gold/60"
+            >
+              <div className="relative aspect-video overflow-hidden bg-ink">
+                <img src={v.thumb} alt={v.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div className="absolute inset-0 grid place-items-center bg-black/25">
+                  <PlayCircle className="h-14 w-14 text-gold drop-shadow-lg" strokeWidth={1.5} />
+                </div>
+                <div className="absolute left-3 top-3 inline-flex items-center gap-1.5 border border-gold/60 bg-background/80 px-2 py-1 text-[0.6rem] uppercase tracking-[0.25em] text-gold backdrop-blur">
+                  <Youtube className="h-3 w-3" /> Episódio
+                </div>
+              </div>
+              <div className="flex flex-1 flex-col p-5">
+                <h3 className="font-display text-base uppercase leading-tight text-foreground line-clamp-3 group-hover:text-gold">{v.title}</h3>
+                <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                  Assistir <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Cortes() {
+  return (
+    <section id="cortes" className="border-b border-border/50 bg-ink">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+        <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
+          <div className="max-w-2xl">
+            <span className="eyebrow"><span className="gold-rule" /> Passiani Advogados nas redes</span>
+            <h2 className="headline mt-5 text-4xl sm:text-5xl md:text-6xl">
+              Cortes que <span className="gold-gradient">protegem</span> a sua empresa.
+            </h2>
+            <p className="mt-5 text-muted-foreground">
+              Conteúdos rápidos e diretos do escritório sobre contratos, blindagem, trabalhista e o que já derrubou muita empresa por aí.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <a href={INSTAGRAM_ADVOCACIA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+              <Instagram className="h-4 w-4" /> @passianiadvogados
+            </a>
+            <a href={YOUTUBE_ADVOCACIA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
               <Youtube className="h-4 w-4" /> YouTube
             </a>
             <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
@@ -678,7 +777,10 @@ function Footer() {
             <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
               <li><a href="#sobre" className="hover:text-gold">Sobre</a></li>
               <li><a href="#atuacao" className="hover:text-gold">Áreas de atuação</a></li>
-              <li><a href="#conteudo" className="hover:text-gold">Conteúdo</a></li>
+              <li><a href="#podcast" className="hover:text-gold">Podcast</a></li>
+              <li><a href="#cortes" className="hover:text-gold">Cortes</a></li>
+              <li><a href="#radar" className="hover:text-gold">Radar Passiani</a></li>
+              <li><a href="#cliente" className="hover:text-gold">Área do cliente</a></li>
               <li><a href="#contato" className="hover:text-gold">Contato</a></li>
               <li><a href="#" className="hover:text-gold">Política de privacidade</a></li>
             </ul>
@@ -686,8 +788,10 @@ function Footer() {
           <div>
             <p className="font-display text-sm uppercase tracking-[0.3em] text-gold">Siga</p>
             <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-              <li><a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Instagram className="h-4 w-4" /> Instagram</a></li>
-              <li><a href={YOUTUBE_CHANNEL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Youtube className="h-4 w-4" /> YouTube · Pod Isso Passiani</a></li>
+              <li><a href={INSTAGRAM_ADVOCACIA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Instagram className="h-4 w-4" /> Instagram · Advocacia</a></li>
+              <li><a href={INSTAGRAM_PODCAST} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Instagram className="h-4 w-4" /> Instagram · Podcast</a></li>
+              <li><a href={YOUTUBE_ADVOCACIA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Youtube className="h-4 w-4" /> YouTube · Advocacia</a></li>
+              <li><a href={YOUTUBE_PODCAST} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Youtube className="h-4 w-4" /> YouTube · Pod Isso Passiani</a></li>
               <li><a href={FACEBOOK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><Facebook className="h-4 w-4" /> Facebook</a></li>
               <li><a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold"><MessageCircle className="h-4 w-4" /> WhatsApp</a></li>
             </ul>
@@ -1003,3 +1107,236 @@ function WhatsAppFloat() {
     </a>
   );
 }
+
+function Radar() {
+  return (
+    <section id="radar" className="relative overflow-hidden border-b border-border/50 bg-ink">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,oklch(0.82_0.12_84/0.15),transparent_55%)]" />
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 md:grid-cols-[1.05fr_1fr] md:items-center md:py-28 lg:px-8">
+        <div>
+          <span className="eyebrow"><span className="gold-rule" /> Produto oficial</span>
+          <div className="mt-5 flex items-center gap-3">
+            <RadarIcon className="h-7 w-7 text-gold" strokeWidth={1.5} />
+            <p className="font-display text-xs uppercase tracking-[0.4em] text-gold">Radar Passiani</p>
+          </div>
+          <h2 className="headline mt-4 text-4xl sm:text-5xl md:text-[3.4rem] leading-[1.05]">
+            Monitore seu <span className="gold-gradient">CNPJ 24h</span> por dia e saiba com antecedência se está sendo processado.
+          </h2>
+          <p className="mt-6 max-w-xl text-lg text-muted-foreground">
+            Enquanto você trabalha, o Radar Passiani vigia. Ferramenta de inteligência jurídica que rastreia
+            movimentações processuais contra o seu CNPJ e te avisa antes que o problema vire prejuízo.
+          </p>
+          <ul className="mt-8 space-y-3 text-sm text-foreground">
+            {[
+              "Alerta em tempo real de novos processos",
+              "Monitoramento contínuo e automatizado",
+              "Antecipe a defesa — reaja antes da citação",
+            ].map((li) => (
+              <li key={li} className="flex items-start gap-3">
+                <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rotate-45 bg-gold" />
+                {li}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-10 flex flex-wrap gap-3">
+            <a href={RADAR_URL} target="_blank" rel="noopener noreferrer" className="btn-gold">
+              Conhecer o Radar Passiani <ArrowRight className="h-4 w-4" />
+            </a>
+            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+              Falar com o time
+            </a>
+          </div>
+        </div>
+        <div className="relative">
+          <div className="relative overflow-hidden border border-gold/40 bg-background shadow-[0_30px_80px_-30px_oklch(0_0_0/0.7)]">
+            <div className="aspect-video w-full">
+              <iframe
+                src={RADAR_URL}
+                title="Radar Passiani — apresentação"
+                loading="lazy"
+                className="h-full w-full"
+                sandbox="allow-scripts allow-same-origin allow-popups"
+              />
+            </div>
+            <div className="flex items-center justify-between gap-4 border-t border-border/60 bg-ink px-5 py-4">
+              <p className="font-display text-xs uppercase tracking-[0.3em] text-gold">passianiinteligencia.lovable.app</p>
+              <a href={RADAR_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-gold">
+                Abrir <ExternalLink className="h-3 w-3" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Publicacoes() {
+  const items = [
+    {
+      name: "Jusbrasil",
+      title: "Perfil e publicações no Jusbrasil",
+      desc: "Artigos técnicos, decisões comentadas e produção jurídica pública de Dr. Marcelo Passiani na maior plataforma jurídica do país.",
+      url: JUSBRASIL,
+      icon: Gavel,
+    },
+    {
+      name: "Migalhas",
+      title: "Autor no Migalhas",
+      desc: "Análises e colunas publicadas em um dos veículos jurídicos mais respeitados do Brasil.",
+      url: MIGALHAS,
+      icon: FileText,
+    },
+  ];
+  return (
+    <section id="publicacoes" className="border-b border-border/50">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+        <div className="max-w-2xl">
+          <span className="eyebrow"><span className="gold-rule" /> Publicações e autoridade</span>
+          <h2 className="headline mt-5 text-4xl sm:text-5xl md:text-6xl">
+            Onde a nossa <span className="gold-gradient">voz</span> é publicada.
+          </h2>
+          <p className="mt-5 text-muted-foreground">
+            Produção jurídica de Dr. Marcelo Passiani em plataformas de referência do Direito brasileiro.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          {items.map(({ name, title, desc, url, icon: Icon }) => (
+            <a
+              key={name}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col justify-between border border-border/60 bg-card/40 p-8 transition-all hover:-translate-y-1 hover:border-gold/60"
+            >
+              <div>
+                <div className="flex items-center gap-3">
+                  <Icon className="h-6 w-6 text-gold" strokeWidth={1.5} />
+                  <p className="font-display text-xs uppercase tracking-[0.35em] text-gold">{name}</p>
+                </div>
+                <h3 className="mt-6 font-display text-2xl uppercase leading-tight text-foreground">{title}</h3>
+                <p className="mt-4 text-sm text-muted-foreground">{desc}</p>
+              </div>
+              <span className="mt-8 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-gold">
+                Acessar perfil <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Cliente() {
+  return (
+    <section id="cliente" className="border-b border-border/50 bg-ink">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+        <div className="max-w-2xl">
+          <span className="eyebrow"><span className="gold-rule" /> Área do cliente</span>
+          <h2 className="headline mt-5 text-4xl sm:text-5xl md:text-6xl">
+            Já é <span className="gold-gradient">cliente</span> Passiani?
+          </h2>
+          <p className="mt-5 text-muted-foreground">
+            Dois atalhos exclusivos para quem já caminha com o escritório: consulte seus processos em tempo real e ajude outros empresários
+            compartilhando a sua experiência.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+          {/* Consulta de Processos */}
+          <div className="flex flex-col border border-border/60 bg-background p-8">
+            <div className="flex items-center gap-3">
+              <Lock className="h-6 w-6 text-gold" strokeWidth={1.5} />
+              <p className="font-display text-xs uppercase tracking-[0.35em] text-gold">Portal seguro</p>
+            </div>
+            <h3 className="mt-4 font-display text-2xl uppercase leading-tight text-foreground">Consulte seu processo</h3>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Acompanhamento em tempo real dos seus processos ativos. Acesse com seu usuário e senha entregues pelo escritório.
+            </p>
+
+            <form
+              action={PROMAD_ACTION}
+              method="post"
+              target="_blank"
+              className="mt-6 space-y-4"
+              onSubmit={(e) => {
+                const f = e.currentTarget as HTMLFormElement;
+                const u = f.elements.namedItem("txtUsuario") as HTMLInputElement;
+                const s = f.elements.namedItem("txtSenha") as HTMLInputElement;
+                if (!u.value.trim()) { e.preventDefault(); alert("O campo usuário é obrigatório"); return; }
+                if (!s.value.trim()) { e.preventDefault(); alert("O campo senha é obrigatório"); return; }
+              }}
+            >
+              <div>
+                <label className="text-[0.65rem] uppercase tracking-[0.3em] text-muted-foreground">Usuário</label>
+                <input
+                  name="txtUsuario"
+                  type="text"
+                  autoComplete="username"
+                  className="mt-2 w-full border border-border bg-transparent px-3 py-3 text-sm text-foreground outline-none transition-colors focus:border-gold"
+                />
+              </div>
+              <div>
+                <label className="text-[0.65rem] uppercase tracking-[0.3em] text-muted-foreground">Senha</label>
+                <input
+                  name="txtSenha"
+                  type="password"
+                  autoComplete="current-password"
+                  className="mt-2 w-full border border-border bg-transparent px-3 py-3 text-sm text-foreground outline-none transition-colors focus:border-gold"
+                />
+              </div>
+              <button type="submit" className="btn-gold w-full">
+                Entrar no portal <ArrowRight className="h-4 w-4" />
+              </button>
+            </form>
+
+            <div className="mt-6 border-t border-border/60 pt-5">
+              <p className="text-sm text-muted-foreground">
+                Está com dificuldade de acesso? Fale com o nosso suporte.
+              </p>
+              <a
+                href={WHATSAPP_CLIENTE}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost-gold mt-3"
+              >
+                <MessageCircle className="h-4 w-4" /> Suporte via WhatsApp
+              </a>
+            </div>
+          </div>
+
+          {/* Avaliação Google */}
+          <div className="relative flex flex-col justify-between overflow-hidden border border-gold/40 bg-background p-8">
+            <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[radial-gradient(circle,oklch(0.82_0.12_84/0.25),transparent_70%)]" />
+            <div className="relative">
+              <div className="flex items-center gap-3">
+                <Star className="h-6 w-6 fill-current text-gold" />
+                <p className="font-display text-xs uppercase tracking-[0.35em] text-gold">Sua experiência importa</p>
+              </div>
+              <h3 className="mt-4 font-display text-2xl uppercase leading-tight text-foreground">
+                Conte pra outros empresários como foi ser cliente Passiani
+              </h3>
+              <p className="mt-4 text-muted-foreground">
+                Sua avaliação no Google ajuda outros empresários a encontrarem uma advocacia séria — e fortalece o trabalho do nosso time.
+                Leva menos de 1 minuto.
+              </p>
+              <div className="mt-6 flex text-gold">
+                {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 fill-current" />)}
+              </div>
+            </div>
+            <div className="relative mt-8 flex flex-wrap gap-3">
+              <a href={GOOGLE_REVIEW} target="_blank" rel="noopener noreferrer" className="btn-gold">
+                <Star className="h-4 w-4 fill-current" /> Avaliar no Google
+              </a>
+              <a href={GOOGLE_MAPS} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+                Ver perfil no Maps
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
