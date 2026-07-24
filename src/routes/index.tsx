@@ -54,6 +54,7 @@ const AMAZON_BOOK = "https://www.amazon.com.br/Pense-Bem-Marcelo-Passiani/dp/859
 const JUSBRASIL = "https://marcelopassiani.jusbrasil.com.br/";
 const MIGALHAS = "https://www.migalhas.com.br/autor/marcelo-passiani";
 const RADAR_URL = "https://passianiinteligencia.lovable.app/";
+const LINKTREE_DANIEL = "https://linktr.ee/danielpassiani";
 const PROMAD_ACTION = "https://www.integra.adv.br/moderno/include/logarSistema.asp?login=integra";
 
 const certificates = [
@@ -805,7 +806,15 @@ function Footer() {
           <p>R. Américo Samarone, 248b · São Paulo — SP</p>
         </div>
         <div className="mt-4 text-center text-[0.6rem] uppercase tracking-[0.35em] text-muted-foreground/60">
-          Site desenvolvido por Daniel Passiani
+          Design e Desenvolvimento por{" "}
+          <a
+            href={LINKTREE_DANIEL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-gold"
+          >
+            Daniel Passiani
+          </a>
         </div>
       </div>
       {/* Preserve uploaded brand banners as hidden references so build sees them */}
