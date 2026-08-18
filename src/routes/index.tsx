@@ -163,7 +163,8 @@ function Home() {
 
 function Nav() {
   const [open, setOpen] = useState(false);
-  const links = [
+  const [moreOpen, setMoreOpen] = useState(false);
+  const mainLinks = [
     { href: "#sobre", label: "Sobre" },
     { href: "#atuacao", label: "Áreas" },
     { href: "#podcast", label: "Podcast" },
@@ -175,24 +176,53 @@ function Nav() {
     { href: "#cliente", label: "Cliente" },
     { href: "#contato", label: "Contato" },
   ];
+  // Responsive subsets to keep the wordmark visually close to the menu without overflowing.
+  const lgLinks = mainLinks.filter((l) => !["masterclass", "livro", "blog"].includes(l.href.slice(1)));
+  const xlLinks = mainLinks.filter((l) => !["livro", "blog"].includes(l.href.slice(1)));
+  const moreItems = (width: "lg" | "xl") =>
+    width === "lg"
+      ? mainLinks.filter((l) => ["masterclass", "livro", "blog"].includes(l.href.slice(1)))
+      : mainLinks.filter((l) => ["livro", "blog"].includes(l.href.slice(1)));
+
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:gap-12 lg:px-8 lg:py-5 xl:gap-20">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:gap-6 lg:px-10 lg:py-5 xl:gap-8 xl:px-12 2xl:gap-10">
         <a href="#top" className="flex min-w-0 shrink-0 items-center gap-3 py-1" aria-label="Passiani Advogados — Início">
           <span className="wordmark text-[22px] sm:text-[26px] lg:text-[28px] xl:text-[30px]">
             <span>Passiani</span>
             <span className="wordmark-sub text-[12px] sm:text-[14px] lg:text-[15px] xl:text-[16px] opacity-90">Advogados</span>
           </span>
         </a>
-        <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end">
-          <span aria-hidden className="mr-6 h-8 w-px bg-border/60 xl:mr-10" />
-          <nav className="flex items-center gap-5 xl:gap-7">
-            {links.map((l) => (
-              <a key={l.href} href={l.href} className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-gold xl:text-xs xl:tracking-[0.2em]">
-                {l.label}
-              </a>
-            ))}
-            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-gold ml-4">Fale conosco</a>
+        <div className="hidden lg:flex lg:items-center lg:justify-start lg:ml-auto">
+          <span aria-hidden className="mr-3 h-7 w-px bg-border/60 xl:mr-4" />
+          <nav className="flex items-center gap-3 xl:gap-4 2xl:gap-5">
+            {/* lg subset */}
+            <span className="hidden lg:flex 2xl:hidden xl:hidden items-center gap-3">
+              {lgLinks.map((l) => (
+                <a key={l.href} href={l.href} className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:text-gold">
+                  {l.label}
+                </a>
+              ))}
+              <NavMore open={moreOpen} setOpen={setMoreOpen} items={moreItems("lg")} />
+            </span>
+            {/* xl subset */}
+            <span className="hidden xl:flex 2xl:hidden items-center gap-4">
+              {xlLinks.map((l) => (
+                <a key={l.href} href={l.href} className="text-[11px] font-semibold uppercase tracking-[0.13em] text-muted-foreground transition-colors hover:text-gold">
+                  {l.label}
+                </a>
+              ))}
+              <NavMore open={moreOpen} setOpen={setMoreOpen} items={moreItems("xl")} />
+            </span>
+            {/* 2xl full menu */}
+            <span className="hidden 2xl:flex items-center gap-5">
+              {mainLinks.map((l) => (
+                <a key={l.href} href={l.href} className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:text-gold">
+                  {l.label}
+                </a>
+              ))}
+            </span>
+            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-gold ml-2 px-4 py-2.5 text-[10px] xl:ml-3 2xl:text-[11px]">Fale conosco</a>
           </nav>
         </div>
         <button onClick={() => setOpen(!open)} className="lg:hidden text-gold shrink-0" aria-label="Menu">
@@ -208,7 +238,7 @@ function Nav() {
         <div className="border-t border-border/60 bg-background lg:hidden">
 
           <div className="flex flex-col gap-1 px-4 py-4">
-            {links.map((l) => (
+            {mainLinks.map((l) => (
               <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="py-2 text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground hover:text-gold">
                 {l.label}
               </a>
@@ -218,6 +248,29 @@ function Nav() {
         </div>
       )}
     </header>
+  );
+}
+
+function NavMore({ open, setOpen, items }: { open: boolean; setOpen: (v: boolean) => void; items: { href: string; label: string }[] }) {
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:text-gold xl:text-[11px] xl:tracking-[0.13em]"
+        aria-expanded={open}
+      >
+        Mais <ChevronDown className={`h-3 w-3 transition-transform ${open ? "rotate-180" : ""}`} />
+      </button>
+      {open && (
+        <div className="absolute right-0 top-full mt-2 min-w-[10rem] border border-border/60 bg-background/95 p-2 shadow-xl backdrop-blur">
+          {items.map((l) => (
+            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:text-gold">
+              {l.label}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
