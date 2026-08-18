@@ -185,14 +185,14 @@ function Nav() {
           </span>
         </a>
         <div className="hidden lg:flex lg:items-center lg:justify-start lg:ml-auto">
-          <span aria-hidden className="mr-4 h-7 w-px bg-border/60 xl:mr-6" />
-          <nav className="flex items-center gap-4 xl:gap-5">
+          <span aria-hidden className="mr-3 h-7 w-px bg-border/60 xl:mr-4" />
+          <nav className="flex items-center gap-3 xl:gap-4">
             {links.map((l) => (
-              <a key={l.href} href={l.href} className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:text-gold xl:tracking-[0.16em]">
+              <a key={l.href} href={l.href} className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:text-gold xl:text-[11px] xl:tracking-[0.14em]">
                 {l.label}
               </a>
             ))}
-            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-gold ml-3">Fale conosco</a>
+            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-gold ml-2 px-4 py-2.5 text-[10px] xl:ml-3">Fale conosco</a>
           </nav>
         </div>
         <button onClick={() => setOpen(!open)} className="lg:hidden text-gold shrink-0" aria-label="Menu">
