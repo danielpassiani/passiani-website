@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import headerAsset from "@/assets/passiani-header.png.asset.json";
 import footerAsset from "@/assets/passiani-footer.png.asset.json";
+import ogImage from "@/assets/passiani-og-image.png";
 
 import portrait from "@/assets/passiani-portrait.jpg.asset.json";
 import working from "@/assets/passiani-working.jpg.asset.json";
@@ -26,6 +27,8 @@ import thumb5Docs from "@/assets/thumb-5documentos.png.asset.json";
 import thumbContrato from "@/assets/thumb-contrato.png.asset.json";
 import thumbSocio from "@/assets/thumb-socio.png.asset.json";
 
+const SITE_ORIGIN = "https://passiani.com.br";
+const OG_IMAGE_URL = `${SITE_ORIGIN}${ogImage}`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -34,6 +37,18 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Advocacia empresarial há 25 anos. Blindagem jurídica, contratos, trabalhista e tributário para pequenas e médias empresas." },
       { property: "og:title", content: "Passiani Advogados — A defesa começa no contrato" },
       { property: "og:description", content: "Advocacia empresarial há 25 anos. Blindagem jurídica, contratos, trabalhista e tributário para pequenas e médias empresas." },
+      { property: "og:url", content: `${SITE_ORIGIN}/` },
+      { property: "og:image", content: OG_IMAGE_URL },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Passiani Advogados — A defesa começa no contrato" },
+      { name: "twitter:title", content: "Passiani Advogados — A defesa começa no contrato" },
+      { name: "twitter:description", content: "Advocacia empresarial há 25 anos. Blindagem jurídica, contratos, trabalhista e tributário para pequenas e médias empresas." },
+      { name: "twitter:image", content: OG_IMAGE_URL },
+      { name: "twitter:image:alt", content: "Passiani Advogados — A defesa começa no contrato" },
+    ],
+    links: [
+      { rel: "canonical", href: `${SITE_ORIGIN}/` },
     ],
   }),
   component: Home,
