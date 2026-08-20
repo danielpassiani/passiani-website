@@ -1,10 +1,11 @@
-<!-- LOVABLE:BEGIN -->
-> [!IMPORTANT]
-> This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
-> published git history — force pushing, or rebasing/amending/squashing commits
-> that are already pushed — as it rewrites history on Lovable's side and the
-> user will likely lose their project history.
->
-> Commits you push to the connected branch sync back to Lovable and show up in
-> the editor, so keep the branch in a working state.
-<!-- LOVABLE:END -->
+# Development Guidelines
+
+## Git workflow
+
+This repository is connected to an external deployment and synchronization workflow.
+
+Do not rewrite published Git history. Avoid force pushing, rebasing, amending, or squashing commits that have already been pushed to the remote repository, as this may disrupt synchronization.
+
+Keep the `main` branch in a working and stable state.
+
+For larger changes, prefer creating a separate branch and opening a Pull Request before merging into `main`.
